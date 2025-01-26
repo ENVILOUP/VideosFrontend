@@ -2,329 +2,307 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Watch</title>
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Watch</title>
+	<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+	<script src="https://cdn.tailwindcss.com"></script>
+	<script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
 </head>
 
 <body>
-    <header class="d-flex justify-content-between align-items-center p-3">
-        <div class="d-flex align-items-center">
-            <img src="static/logo.png" alt="Website Logo" class="mr-3" style="height: 50px;">
-            <h2 class="mb-0">Videos</h2>
-        </div>
-        <form class="form-inline">
-            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-        </form>
-        <a href="profile.html">
-            <img src="static/avatar.png" alt="Profile Avatar" class="rounded-circle" style="height: 50px;">
-        </a>
-    </header>
+	<header class="d-flex justify-content-between align-items-center p-3">
+		<div class="d-flex align-items-center">
+			<img src="static/logo.png" alt="Website Logo" class="mr-3" style="height: 50px;">
+			<h2 class="mb-0">Videos</h2>
+		</div>
+		<form class="form-inline">
+			<input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+			<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+		</form>
+		<a href="profile.html">
+			<img src="static/avatar.png" alt="Profile Avatar" class="rounded-circle" style="height: 50px;">
+		</a>
+	</header>
 
-    <div class="container-fluid h-100">
-        <div class="row h-100">
-            <div class="col-9">
-                <video id="videoPlayer" class="w-100"
-                    poster="http://cdn.enviloup.com/thumbnails/ddbbe69a-b3d6-4548-a136-4d0315b837bd/default.webp"
-                    controls>
-                    <source src="http://cdn.enviloup.com/videos/ddbbe69a-b3d6-4548-a136-4d0315b837bd/master.m3u8"
-                        type="application/x-mpegURL">
-                    Your browser does not support the video tag.
-                </video>
+	<div class="container-fluid h-100">
+		<div class="row h-100">
+			<div class="col-9">
+				<div id="videoContainer">
+					<!-- Video Player -->
+				</div>
 
-                <h2>Video Title</h2>
-                <div>
-                    <span>1 488 Views</span>
-                    <span>&#x2022</span>
-                    <span>2 hours ago</span>
-                    <span>
-                        <span>
-                            <img src="static/like.svg" style="height: 50px;">
-                        </span>
-                        <span>
-                            <img src="static/dislike.svg" style="height: 50px;">
-                        </span>
-                    </span>
-                </div>
-                <hr>
-                <div>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque tincidunt nisl felis, ut
-                        tincidunt lorem fermentum non. Suspendisse posuere sit amet ex eu eleifend. Etiam pharetra mi
-                        quis sapien maximus lobortis.</p>
+				<div id="videoInfo">
+					<!-- Video Info -->
+				</div>
 
-                    <p>Links: https://enviloup.com/</p>
+				<div>
+					<h3>2 028 Comments</h3>
+					<div class="row">
+						<div class="col-1">
+							<img src="static/avatar.png" alt="Profile Avatar" class="rounded-circle" style="height: 50px;">
+						</div>
+						<div class="col-11">
+							<p>
+								<span>@user10023124</span>
+								<span>&#x2022</span>
+								<span>1 hours ago</span>
+							</p>
+							<p>Sed vitae dignissim sapien. Sed faucibus fringilla purus sed rutrum. Sed vitae tristique leo. Sed nec
+								justo velit. Curabitur sed metus sed nisl faucibus mollis tempor nec enim. Proin eget consequat dolor,
+								et ultrices nisl. Quisque iaculis odio sed nisl vulputate, a consequat sapien eleifend. Fusce pretium
+								urna id maximus auctor. Morbi sit amet felis ac lorem interdum hendrerit a sed metus. Morbi congue
+								sagittis orci eu vulputate. Aliquam blandit venenatis volutpat.</p>
+							<p>1 reply &#9660;</p>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-1">
+							<img src="static/avatar.png" alt="Profile Avatar" class="rounded-circle" style="height: 50px;">
+						</div>
+						<div class="col-11">
+							<p>
+								<span>@user10023124</span>
+								<span>&#x2022</span>
+								<span>1 hours ago</span>
+							</p>
+							<p>Sed vitae dignissim sapien. Sed faucibus fringilla purus sed rutrum. Sed vitae tristique leo. Sed nec
+								justo velit. Curabitur sed metus sed nisl faucibus mollis tempor nec enim. Proin eget consequat dolor,
+								et ultrices nisl. Quisque iaculis odio sed nisl vulputate, a consequat sapien eleifend. Fusce pretium
+								urna id maximus auctor. Morbi sit amet felis ac lorem interdum hendrerit a sed metus. Morbi congue
+								sagittis orci eu vulputate. Aliquam blandit venenatis volutpat.</p>
+							<p>31 reply &#9660;</p>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-1">
+							<img src="static/avatar.png" alt="Profile Avatar" class="rounded-circle" style="height: 50px;">
+						</div>
+						<div class="col-11">
+							<p>
+								<span>@user10023124</span>
+								<span>&#x2022</span>
+								<span>1 hours ago</span>
+							</p>
+							<p>Sed vitae dignissim sapien. Sed faucibus fringilla purus sed rutrum. Sed vitae tristique leo. Sed nec
+								justo velit. Curabitur sed metus sed nisl faucibus mollis tempor nec enim. Proin eget consequat dolor,
+								et ultrices nisl. Quisque iaculis odio sed nisl vulputate, a consequat sapien eleifend. Fusce pretium
+								urna id maximus auctor. Morbi sit amet felis ac lorem interdum hendrerit a sed metus. Morbi congue
+								sagittis orci eu vulputate. Aliquam blandit venenatis volutpat.</p>
+							<p>11 reply &#9660;</p>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-1">
+							<img src="static/avatar.png" alt="Profile Avatar" class="rounded-circle" style="height: 50px;">
+						</div>
+						<div class="col-11">
+							<p>
+								<span>@user10023124</span>
+								<span>&#x2022</span>
+								<span>1 hours ago</span>
+							</p>
+							<p>Sed vitae dignissim sapien. Sed faucibus fringilla purus sed rutrum. Sed vitae tristique leo. Sed nec
+								justo velit. Curabitur sed metus sed nisl faucibus mollis tempor nec enim. Proin eget consequat dolor,
+								et ultrices nisl. Quisque iaculis odio sed nisl vulputate, a consequat sapien eleifend. Fusce pretium
+								urna id maximus auctor. Morbi sit amet felis ac lorem interdum hendrerit a sed metus. Morbi congue
+								sagittis orci eu vulputate. Aliquam blandit venenatis volutpat.</p>
+							<p>12 reply &#9660;</p>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-1">
+							<img src="static/avatar.png" alt="Profile Avatar" class="rounded-circle" style="height: 50px;">
+						</div>
+						<div class="col-11">
+							<p>
+								<span>@user10023124</span>
+								<span>&#x2022</span>
+								<span>1 hours ago</span>
+							</p>
+							<p>Sed vitae dignissim sapien. Sed faucibus fringilla purus sed rutrum. Sed vitae tristique leo. Sed nec
+								justo velit. Curabitur sed metus sed nisl faucibus mollis tempor nec enim. Proin eget consequat dolor,
+								et ultrices nisl. Quisque iaculis odio sed nisl vulputate, a consequat sapien eleifend. Fusce pretium
+								urna id maximus auctor. Morbi sit amet felis ac lorem interdum hendrerit a sed metus. Morbi congue
+								sagittis orci eu vulputate. Aliquam blandit venenatis volutpat.</p>
+							<p>1 reply &#9650;</p>
+							<div class="row">
+								<div class="col-1">
+									<img src="static/avatar.png" alt="Profile Avatar" class="rounded-circle" style="height: 50px;">
+								</div>
+								<div class="col-11">
+									<p>
+										<span>@user10023124</span>
+										<span>&#x2022</span>
+										<span>1 hours ago</span>
+									</p>
+									<p>Sed vitae dignissim sapien. Sed faucibus fringilla purus sed rutrum. Sed vitae tristique leo. Sed
+										nec justo velit. Curabitur sed metus sed nisl faucibus mollis tempor nec enim. Proin eget consequat
+										dolor, et ultrices nisl. Quisque iaculis odio sed nisl vulputate, a consequat sapien eleifend. Fusce
+										pretium urna id maximus auctor. Morbi sit amet felis ac lorem interdum hendrerit a sed metus. Morbi
+										congue sagittis orci eu vulputate. Aliquam blandit venenatis volutpat.</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col">
+				<div class="row row-cols-1">
 
-                    <p>In lectus erat, consectetur id accumsan in, ornare ut nibh. Nulla fringilla at justo a fermentum.
-                    </p>
+					<div class="col w-100">
+						<a href="video.html" class="card-link text-decoration-none text-reset">
+							<div class="card">
+								<img src="static/preview.webp" class="card-img-top" alt="Video Preview">
+								<div class="card-body">
+									<h5 class="card-title text-truncate" style="overflow: hidden;">Video Title</h5>
+									<p class="card-text">Author Name</p>
+									<div class="d-flex justify-content-between">
+										<span>123K views</span>
+										<span>5 days ago</span>
+									</div>
+								</div>
+							</div>
+						</a>
+					</div>
 
-                    <p>Donec sit amet nisl vitae magna dapibus suscipit et ut massa. Suspendisse ultricies justo in
-                        augue sagittis, id ullamcorper enim molestie. Cras malesuada turpis eget pharetra ornare.
-                        Quisque felis ipsum, interdum a laoreet id, fringilla eu ligula. Sed malesuada nunc non massa
-                        dictum, non vulputate massa placerat. In hac habitasse platea dictumst. Curabitur et neque vel
-                        erat dapibus aliquet. Ut quis consequat quam. Maecenas sagittis, nulla sed rhoncus mollis, massa
-                        nisi laoreet ante, ut sollicitudin nunc tellus eget tellus. Quisque ultrices laoreet mauris,
-                        vitae vulputate nunc cursus sit amet. Etiam vitae est bibendum, vehicula nibh in, dictum ante.
-                        Interdum et malesuada fames ac ante ipsum primis in faucibus.</p>
+					<div class="col">
+						<a href="video.html" class="card-link text-decoration-none text-reset">
+							<div class="card">
+								<img src="static/preview.webp" class="card-img-top" alt="Video Preview">
+								<div class="card-body">
+									<h5 class="card-title text-truncate" style="overflow: hidden;">Video Title</h5>
+									<p class="card-text">Author Name</p>
+									<div class="d-flex justify-content-between">
+										<span>123K views</span>
+										<span>5 days ago</span>
+									</div>
+								</div>
+							</div>
+						</a>
+					</div>
 
-                    <p>Ut viverra, lacus et tristique ornare, tellus sapien egestas metus.</p>
+					<div class="col">
+						<a href="video.html" class="card-link text-decoration-none text-reset">
+							<div class="card">
+								<img src="static/preview.webp" class="card-img-top" alt="Video Preview">
+								<div class="card-body">
+									<h5 class="card-title text-truncate" style="overflow: hidden;">Video Title</h5>
+									<p class="card-text">Author Name</p>
+									<div class="d-flex justify-content-between">
+										<span>123K views</span>
+										<span>5 days ago</span>
+									</div>
+								</div>
+							</div>
+						</a>
+					</div>
 
-                    <p>#hello #azazin_creed</p>
-                </div>
-                <div>
-                    <h3>2 028 Comments</h3>
-                    <div class="row">
-                        <div class="col-1">
-                            <img src="static/avatar.png" alt="Profile Avatar" class="rounded-circle" style="height: 50px;">
-                        </div>
-                        <div class="col-11">
-                            <p>
-                                <span>@user10023124</span>
-                                <span>&#x2022</span>
-                                <span>1 hours ago</span>
-                            </p>
-                            <p>Sed vitae dignissim sapien. Sed faucibus fringilla purus sed rutrum. Sed vitae tristique leo. Sed nec justo velit. Curabitur sed metus sed nisl faucibus mollis tempor nec enim. Proin eget consequat dolor, et ultrices nisl. Quisque iaculis odio sed nisl vulputate, a consequat sapien eleifend. Fusce pretium urna id maximus auctor. Morbi sit amet felis ac lorem interdum hendrerit a sed metus. Morbi congue sagittis orci eu vulputate. Aliquam blandit venenatis volutpat.</p>
-                            <p>1 reply &#9660;</p>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-1">
-                            <img src="static/avatar.png" alt="Profile Avatar" class="rounded-circle" style="height: 50px;">
-                        </div>
-                        <div class="col-11">
-                            <p>
-                                <span>@user10023124</span>
-                                <span>&#x2022</span>
-                                <span>1 hours ago</span>
-                            </p>
-                            <p>Sed vitae dignissim sapien. Sed faucibus fringilla purus sed rutrum. Sed vitae tristique leo. Sed nec justo velit. Curabitur sed metus sed nisl faucibus mollis tempor nec enim. Proin eget consequat dolor, et ultrices nisl. Quisque iaculis odio sed nisl vulputate, a consequat sapien eleifend. Fusce pretium urna id maximus auctor. Morbi sit amet felis ac lorem interdum hendrerit a sed metus. Morbi congue sagittis orci eu vulputate. Aliquam blandit venenatis volutpat.</p>
-                            <p>31 reply &#9660;</p>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-1">
-                            <img src="static/avatar.png" alt="Profile Avatar" class="rounded-circle" style="height: 50px;">
-                        </div>
-                        <div class="col-11">
-                            <p>
-                                <span>@user10023124</span>
-                                <span>&#x2022</span>
-                                <span>1 hours ago</span>
-                            </p>
-                            <p>Sed vitae dignissim sapien. Sed faucibus fringilla purus sed rutrum. Sed vitae tristique leo. Sed nec justo velit. Curabitur sed metus sed nisl faucibus mollis tempor nec enim. Proin eget consequat dolor, et ultrices nisl. Quisque iaculis odio sed nisl vulputate, a consequat sapien eleifend. Fusce pretium urna id maximus auctor. Morbi sit amet felis ac lorem interdum hendrerit a sed metus. Morbi congue sagittis orci eu vulputate. Aliquam blandit venenatis volutpat.</p>
-                            <p>11 reply &#9660;</p>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-1">
-                            <img src="static/avatar.png" alt="Profile Avatar" class="rounded-circle" style="height: 50px;">
-                        </div>
-                        <div class="col-11">
-                            <p>
-                                <span>@user10023124</span>
-                                <span>&#x2022</span>
-                                <span>1 hours ago</span>
-                            </p>
-                            <p>Sed vitae dignissim sapien. Sed faucibus fringilla purus sed rutrum. Sed vitae tristique leo. Sed nec justo velit. Curabitur sed metus sed nisl faucibus mollis tempor nec enim. Proin eget consequat dolor, et ultrices nisl. Quisque iaculis odio sed nisl vulputate, a consequat sapien eleifend. Fusce pretium urna id maximus auctor. Morbi sit amet felis ac lorem interdum hendrerit a sed metus. Morbi congue sagittis orci eu vulputate. Aliquam blandit venenatis volutpat.</p>
-                            <p>12 reply &#9660;</p>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-1">
-                            <img src="static/avatar.png" alt="Profile Avatar" class="rounded-circle" style="height: 50px;">
-                        </div>
-                        <div class="col-11">
-                            <p>
-                                <span>@user10023124</span>
-                                <span>&#x2022</span>
-                                <span>1 hours ago</span>
-                            </p>
-                            <p>Sed vitae dignissim sapien. Sed faucibus fringilla purus sed rutrum. Sed vitae tristique leo. Sed nec justo velit. Curabitur sed metus sed nisl faucibus mollis tempor nec enim. Proin eget consequat dolor, et ultrices nisl. Quisque iaculis odio sed nisl vulputate, a consequat sapien eleifend. Fusce pretium urna id maximus auctor. Morbi sit amet felis ac lorem interdum hendrerit a sed metus. Morbi congue sagittis orci eu vulputate. Aliquam blandit venenatis volutpat.</p>
-                            <p>1 reply &#9650;</p>
-                            <div class="row">
-                                <div class="col-1">
-                                    <img src="static/avatar.png" alt="Profile Avatar" class="rounded-circle" style="height: 50px;">
-                                </div>
-                                <div class="col-11">
-                                    <p>
-                                        <span>@user10023124</span>
-                                        <span>&#x2022</span>
-                                        <span>1 hours ago</span>
-                                    </p>
-                                    <p>Sed vitae dignissim sapien. Sed faucibus fringilla purus sed rutrum. Sed vitae tristique leo. Sed nec justo velit. Curabitur sed metus sed nisl faucibus mollis tempor nec enim. Proin eget consequat dolor, et ultrices nisl. Quisque iaculis odio sed nisl vulputate, a consequat sapien eleifend. Fusce pretium urna id maximus auctor. Morbi sit amet felis ac lorem interdum hendrerit a sed metus. Morbi congue sagittis orci eu vulputate. Aliquam blandit venenatis volutpat.</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col">
-                <div class="row row-cols-1">
+					<div class="col">
+						<a href="video.html" class="card-link text-decoration-none text-reset">
+							<div class="card">
+								<img src="static/preview.webp" class="card-img-top" alt="Video Preview">
+								<div class="card-body">
+									<h5 class="card-title text-truncate" style="overflow: hidden;">Video Title</h5>
+									<p class="card-text">Author Name</p>
+									<div class="d-flex justify-content-between">
+										<span>123K views</span>
+										<span>5 days ago</span>
+									</div>
+								</div>
+							</div>
+						</a>
+					</div>
 
-                    <div class="col w-100">
-                        <a href="video.html" class="card-link text-decoration-none text-reset">
-                            <div class="card">
-                                <img src="static/preview.webp" class="card-img-top" alt="Video Preview">
-                                <div class="card-body">
-                                    <h5 class="card-title text-truncate" style="overflow: hidden;">Video Title</h5>
-                                    <p class="card-text">Author Name</p>
-                                    <div class="d-flex justify-content-between">
-                                        <span>123K views</span>
-                                        <span>5 days ago</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
+					<div class="col">
+						<a href="video.html" class="card-link text-decoration-none text-reset">
+							<div class="card">
+								<img src="static/preview.webp" class="card-img-top" alt="Video Preview">
+								<div class="card-body">
+									<h5 class="card-title text-truncate" style="overflow: hidden;">Video Title</h5>
+									<p class="card-text">Author Name</p>
+									<div class="d-flex justify-content-between">
+										<span>123K views</span>
+										<span>5 days ago</span>
+									</div>
+								</div>
+							</div>
+						</a>
+					</div>
 
-                    <div class="col">
-                        <a href="video.html" class="card-link text-decoration-none text-reset">
-                            <div class="card">
-                                <img src="static/preview.webp" class="card-img-top" alt="Video Preview">
-                                <div class="card-body">
-                                    <h5 class="card-title text-truncate" style="overflow: hidden;">Video Title</h5>
-                                    <p class="card-text">Author Name</p>
-                                    <div class="d-flex justify-content-between">
-                                        <span>123K views</span>
-                                        <span>5 days ago</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
+					<div class="col">
+						<a href="video.html" class="card-link text-decoration-none text-reset">
+							<div class="card">
+								<img src="static/preview.webp" class="card-img-top" alt="Video Preview">
+								<div class="card-body">
+									<h5 class="card-title text-truncate" style="overflow: hidden;">Video Title</h5>
+									<p class="card-text">Author Name</p>
+									<div class="d-flex justify-content-between">
+										<span>123K views</span>
+										<span>5 days ago</span>
+									</div>
+								</div>
+							</div>
+						</a>
+					</div>
 
-                    <div class="col">
-                        <a href="video.html" class="card-link text-decoration-none text-reset">
-                            <div class="card">
-                                <img src="static/preview.webp" class="card-img-top" alt="Video Preview">
-                                <div class="card-body">
-                                    <h5 class="card-title text-truncate" style="overflow: hidden;">Video Title</h5>
-                                    <p class="card-text">Author Name</p>
-                                    <div class="d-flex justify-content-between">
-                                        <span>123K views</span>
-                                        <span>5 days ago</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
+					<div class="col">
+						<a href="video.html" class="card-link text-decoration-none text-reset">
+							<div class="card">
+								<img src="static/preview.webp" class="card-img-top" alt="Video Preview">
+								<div class="card-body">
+									<h5 class="card-title text-truncate" style="overflow: hidden;">Video Title</h5>
+									<p class="card-text">Author Name</p>
+									<div class="d-flex justify-content-between">
+										<span>123K views</span>
+										<span>5 days ago</span>
+									</div>
+								</div>
+							</div>
+						</a>
+					</div>
 
-                    <div class="col">
-                        <a href="video.html" class="card-link text-decoration-none text-reset">
-                            <div class="card">
-                                <img src="static/preview.webp" class="card-img-top" alt="Video Preview">
-                                <div class="card-body">
-                                    <h5 class="card-title text-truncate" style="overflow: hidden;">Video Title</h5>
-                                    <p class="card-text">Author Name</p>
-                                    <div class="d-flex justify-content-between">
-                                        <span>123K views</span>
-                                        <span>5 days ago</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
+					<div class="col">
+						<a href="video.html" class="card-link text-decoration-none text-reset">
+							<div class="card">
+								<img src="static/preview.webp" class="card-img-top" alt="Video Preview">
+								<div class="card-body">
+									<h5 class="card-title text-truncate" style="overflow: hidden;">Video Title</h5>
+									<p class="card-text">Author Name</p>
+									<div class="d-flex justify-content-between">
+										<span>123K views</span>
+										<span>5 days ago</span>
+									</div>
+								</div>
+							</div>
+						</a>
+					</div>
 
-                    <div class="col">
-                        <a href="video.html" class="card-link text-decoration-none text-reset">
-                            <div class="card">
-                                <img src="static/preview.webp" class="card-img-top" alt="Video Preview">
-                                <div class="card-body">
-                                    <h5 class="card-title text-truncate" style="overflow: hidden;">Video Title</h5>
-                                    <p class="card-text">Author Name</p>
-                                    <div class="d-flex justify-content-between">
-                                        <span>123K views</span>
-                                        <span>5 days ago</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
+					<div class="col">
+						<a href="video.html" class="card-link text-decoration-none text-reset">
+							<div class="card">
+								<img src="static/preview.webp" class="card-img-top" alt="Video Preview">
+								<div class="card-body">
+									<h5 class="card-title text-truncate" style="overflow: hidden;">Video Title</h5>
+									<p class="card-text">Author Name</p>
+									<div class="d-flex justify-content-between">
+										<span>123K views</span>
+										<span>5 days ago</span>
+									</div>
+								</div>
+							</div>
+						</a>
+					</div>
 
-                    <div class="col">
-                        <a href="video.html" class="card-link text-decoration-none text-reset">
-                            <div class="card">
-                                <img src="static/preview.webp" class="card-img-top" alt="Video Preview">
-                                <div class="card-body">
-                                    <h5 class="card-title text-truncate" style="overflow: hidden;">Video Title</h5>
-                                    <p class="card-text">Author Name</p>
-                                    <div class="d-flex justify-content-between">
-                                        <span>123K views</span>
-                                        <span>5 days ago</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
+				</div>
+			</div>
+		</div>
+	</div>
 
-                    <div class="col">
-                        <a href="video.html" class="card-link text-decoration-none text-reset">
-                            <div class="card">
-                                <img src="static/preview.webp" class="card-img-top" alt="Video Preview">
-                                <div class="card-body">
-                                    <h5 class="card-title text-truncate" style="overflow: hidden;">Video Title</h5>
-                                    <p class="card-text">Author Name</p>
-                                    <div class="d-flex justify-content-between">
-                                        <span>123K views</span>
-                                        <span>5 days ago</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-
-                    <div class="col">
-                        <a href="video.html" class="card-link text-decoration-none text-reset">
-                            <div class="card">
-                                <img src="static/preview.webp" class="card-img-top" alt="Video Preview">
-                                <div class="card-body">
-                                    <h5 class="card-title text-truncate" style="overflow: hidden;">Video Title</h5>
-                                    <p class="card-text">Author Name</p>
-                                    <div class="d-flex justify-content-between">
-                                        <span>123K views</span>
-                                        <span>5 days ago</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-
-                    <div class="col">
-                        <a href="video.html" class="card-link text-decoration-none text-reset">
-                            <div class="card">
-                                <img src="static/preview.webp" class="card-img-top" alt="Video Preview">
-                                <div class="card-body">
-                                    <h5 class="card-title text-truncate" style="overflow: hidden;">Video Title</h5>
-                                    <p class="card-text">Author Name</p>
-                                    <div class="d-flex justify-content-between">
-                                        <span>123K views</span>
-                                        <span>5 days ago</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <script>
-        if (Hls.isSupported()) {
-            var video = document.getElementById('videoPlayer');
-            var hls = new Hls();
-            hls.loadSource('http://cdn.enviloup.com/videos/ddbbe69a-b3d6-4548-a136-4d0315b837bd/master.m3u8');
-            hls.attachMedia(video);
-            hls.on(Hls.Events.MANIFEST_PARSED, function () {
-                video.play();
-            });
-        }
-    </script>
+	<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+	<script src="js/content_watch.js"></script>
 </body>
 
 </html>

@@ -2,304 +2,74 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Index</title>
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Index</title>
+	<script src="https://cdn.tailwindcss.com"></script>
 </head>
 
-<body>
-    <header class="d-flex justify-content-between align-items-center p-3">
-        <div class="d-flex align-items-center">
-            <img src="static/logo.png" alt="Website Logo" class="mr-3" style="height: 50px;">
-            <h2 class="mb-0">Videos</h2>
-        </div>
-        <form class="form-inline">
-            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-        </form>
-        <a href="profile.html">
-            <img src="static/avatar.png" alt="Profile Avatar" class="rounded-circle" style="height: 50px;">
-        </a>
-    </header>
+<body class="bg-gray-100">
+	<header class="flex justify-between items-center p-4 bg-white shadow-md">
+		<div class="flex items-center">
+			<img src="static/logo.png" alt="Website Logo" class="mr-3" style="height: 50px;">
+			<h2 class="text-xl font-semibold">Videos</h2>
+		</div>
+		<form class="flex items-center">
+			<input class="form-input px-4 py-2 rounded-md border border-gray-300 mr-2" type="search" placeholder="Search" aria-label="Search">
+			<button class="btn bg-green-500 text-white px-4 py-2 rounded-md hover:bg-green-600" type="submit">Search</button>
+		</form>
+		<a href="profile.html">
+			<img src="static/avatar.png" alt="Profile Avatar" class="rounded-full" style="height: 50px;">
+		</a>
+	</header>
 
-    <div class="container-fluid h-100">
-        <div class="row h-100">
-            <div class="col-3">
-                <div class="list-group">
-                    <a href="#" class="list-group-item list-group-item-action d-flex align-items-center">
-                        <img src="static/home.svg" alt="Icon 1" class="mr-3" style="height: 30px;">
-                        Home
-                    </a>
-                    <a href="#" class="list-group-item list-group-item-action d-flex align-items-center">
-                        <img src="static/unavaible.svg" alt="Icon 2" class="mr-3" style="height: 30px;">
-                        Subscriptions
-                    </a>
-                    <a href="#" class="list-group-item list-group-item-action d-flex align-items-center">
-                        <img src="static/unavaible.svg" alt="Icon 3" class="mr-3" style="height: 30px;">
-                        Studio
-                    </a>
-                </div>
-                <hr>
-                <div class="list-group">
-                    <a href="#" class="list-group-item list-group-item-action d-flex align-items-center">
-                        <img src="static/unavaible.svg" alt="Icon 4" class="mr-3" style="height: 30px;">
-                        History
-                    </a>
-                    <a href="#" class="list-group-item list-group-item-action d-flex align-items-center">
-                        <img src="static/unavaible.svg" alt="Icon 4" class="mr-3" style="height: 30px;">
-                        Liked videos
-                    </a>
-                </div>
-                <hr>
-                <div class="list-group">
-                    <a href="#" class="list-group-item list-group-item-action d-flex align-items-center">
-                        <img src="static/unavaible.svg" alt="Icon 4" class="mr-3" style="height: 30px;">
-                        Settings
-                    </a>
-                </div>
-                <hr>
-                <div>
-                    <a href="about.html" class="d-inline py-2">About</a>
-                    <a href="copyright.html" class="d-inline py-2">Copyright</a>
-                    <a href="privacy.html" class="d-inline py-2">Privacy Policy</a>
-                </div>
-                <p>(c) 2025 enviloup.com</p>
-            </div>
-            <div class="col">
-                <div class="row">
+	<div class="container mx-auto h-full flex">
+		<!-- Sidebar -->
+		<div class="w-1/4 bg-white p-4 shadow-lg">
+			<div class="space-y-4">
+				<a href="#" class="flex items-center space-x-3 p-2 rounded-md hover:bg-gray-100">
+					<img src="static/home.svg" alt="Icon 1" class="w-6 h-6">
+					<span>Home</span>
+				</a>
+				<a href="#" class="flex items-center space-x-3 p-2 rounded-md hover:bg-gray-100">
+					<img src="static/unavaible.svg" alt="Icon 2" class="w-6 h-6">
+					<span>Subscriptions</span>
+				</a>
+				<a href="#" class="flex items-center space-x-3 p-2 rounded-md hover:bg-gray-100">
+					<img src="static/unavaible.svg" alt="Icon 3" class="w-6 h-6">
+					<span>Studio</span>
+				</a>
+				<hr class="my-4">
+				<a href="#" class="flex items-center space-x-3 p-2 rounded-md hover:bg-gray-100">
+					<img src="static/unavaible.svg" alt="Icon 4" class="w-6 h-6">
+					<span>History</span>
+				</a>
+				<a href="#" class="flex items-center space-x-3 p-2 rounded-md hover:bg-gray-100">
+					<img src="static/unavaible.svg" alt="Icon 5" class="w-6 h-6">
+					<span>Liked videos</span>
+				</a>
+				<hr class="my-4">
+				<a href="#" class="flex items-center space-x-3 p-2 rounded-md hover:bg-gray-100">
+					<img src="static/unavaible.svg" alt="Icon 6" class="w-6 h-6">
+					<span>Settings</span>
+				</a>
+				<hr class="my-4">
+				<div>
+					<a href="about.html" class="text-blue-500 hover:underline">About</a>
+					<a href="copyright.html" class="text-blue-500 hover:underline ml-4">Copyright</a>
+					<a href="privacy.html" class="text-blue-500 hover:underline ml-4">Privacy Policy</a>
+				</div>
+				<p class="text-sm text-gray-500 mt-4">(c) 2025 enviloup.com</p>
+			</div>
+		</div>
 
-                    <div class="col-md-4">
-                        <a href="video.html" class="card-link text-decoration-none text-reset">
-                            <div class="card">
-                                <img src="static/preview.webp" class="card-img-top" alt="Video Preview">
-                                <div class="card-body">
-                                    <h5 class="card-title text-truncate" style="overflow: hidden;">Video Title</h5>
-                                    <p class="card-text">Author Name</p>
-                                    <div class="d-flex justify-content-between">
-                                        <span>123K views</span>
-                                        <span>5 days ago</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
+		<!-- Video Grid -->
+		<div id="videos" class="flex-1 p-4 grid grid-cols-1 lg:grid-cols-2 gap-6">
+			<!-- Videos will be injected here -->
+		</div>
+	</div>
 
-                    <div class="col-md-4">
-                        <a href="video.html" class="card-link text-decoration-none text-reset">
-                            <div class="card">
-                                <img src="static/preview.webp" class="card-img-top" alt="Video Preview">
-                                <div class="card-body">
-                                    <h5 class="card-title text-truncate" style="overflow: hidden;">Video Title</h5>
-                                    <p class="card-text">Author Name</p>
-                                    <div class="d-flex justify-content-between">
-                                        <span>123K views</span>
-                                        <span>5 days ago</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                    
-                    <div class="col-md-4">
-                        <a href="video.html" class="card-link text-decoration-none text-reset">
-                            <div class="card">
-                                <img src="static/preview.webp" class="card-img-top" alt="Video Preview">
-                                <div class="card-body">
-                                    <h5 class="card-title text-truncate" style="overflow: hidden;">Video Title</h5>
-                                    <p class="card-text">Author Name</p>
-                                    <div class="d-flex justify-content-between">
-                                        <span>123K views</span>
-                                        <span>5 days ago</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                    
-                    <div class="col-md-4">
-                        <a href="video.html" class="card-link text-decoration-none text-reset">
-                            <div class="card">
-                                <img src="static/preview.webp" class="card-img-top" alt="Video Preview">
-                                <div class="card-body">
-                                    <h5 class="card-title text-truncate" style="overflow: hidden;">Video Title</h5>
-                                    <p class="card-text">Author Name</p>
-                                    <div class="d-flex justify-content-between">
-                                        <span>123K views</span>
-                                        <span>5 days ago</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-
-                    <div class="col-md-4">
-                        <a href="video.html" class="card-link text-decoration-none text-reset">
-                            <div class="card">
-                                <img src="static/preview.webp" class="card-img-top" alt="Video Preview">
-                                <div class="card-body">
-                                    <h5 class="card-title text-truncate" style="overflow: hidden;">Video Title</h5>
-                                    <p class="card-text">Author Name</p>
-                                    <div class="d-flex justify-content-between">
-                                        <span>123K views</span>
-                                        <span>5 days ago</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-
-                    <div class="col-md-4">
-                        <a href="video.html" class="card-link text-decoration-none text-reset">
-                            <div class="card">
-                                <img src="static/preview.webp" class="card-img-top" alt="Video Preview">
-                                <div class="card-body">
-                                    <h5 class="card-title text-truncate" style="overflow: hidden;">Video Title</h5>
-                                    <p class="card-text">Author Name</p>
-                                    <div class="d-flex justify-content-between">
-                                        <span>123K views</span>
-                                        <span>5 days ago</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-
-                    <div class="col-md-4">
-                        <a href="video.html" class="card-link text-decoration-none text-reset">
-                            <div class="card">
-                                <img src="static/preview.webp" class="card-img-top" alt="Video Preview">
-                                <div class="card-body">
-                                    <h5 class="card-title text-truncate" style="overflow: hidden;">Video Title</h5>
-                                    <p class="card-text">Author Name</p>
-                                    <div class="d-flex justify-content-between">
-                                        <span>123K views</span>
-                                        <span>5 days ago</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-
-                    <div class="col-md-4">
-                        <a href="video.html" class="card-link text-decoration-none text-reset">
-                            <div class="card">
-                                <img src="static/preview.webp" class="card-img-top" alt="Video Preview">
-                                <div class="card-body">
-                                    <h5 class="card-title text-truncate" style="overflow: hidden;">Video Title</h5>
-                                    <p class="card-text">Author Name</p>
-                                    <div class="d-flex justify-content-between">
-                                        <span>123K views</span>
-                                        <span>5 days ago</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-
-                    <div class="col-md-4">
-                        <a href="video.html" class="card-link text-decoration-none text-reset">
-                            <div class="card">
-                                <img src="static/preview.webp" class="card-img-top" alt="Video Preview">
-                                <div class="card-body">
-                                    <h5 class="card-title text-truncate" style="overflow: hidden;">Video Title</h5>
-                                    <p class="card-text">Author Name</p>
-                                    <div class="d-flex justify-content-between">
-                                        <span>123K views</span>
-                                        <span>5 days ago</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-
-                    <div class="col-md-4">
-                        <a href="video.html" class="card-link text-decoration-none text-reset">
-                            <div class="card">
-                                <img src="static/preview.webp" class="card-img-top" alt="Video Preview">
-                                <div class="card-body">
-                                    <h5 class="card-title text-truncate" style="overflow: hidden;">Video Title</h5>
-                                    <p class="card-text">Author Name</p>
-                                    <div class="d-flex justify-content-between">
-                                        <span>123K views</span>
-                                        <span>5 days ago</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-
-                    <div class="col-md-4">
-                        <a href="video.html" class="card-link text-decoration-none text-reset">
-                            <div class="card">
-                                <img src="static/preview.webp" class="card-img-top" alt="Video Preview">
-                                <div class="card-body">
-                                    <h5 class="card-title text-truncate" style="overflow: hidden;">Video Title</h5>
-                                    <p class="card-text">Author Name</p>
-                                    <div class="d-flex justify-content-between">
-                                        <span>123K views</span>
-                                        <span>5 days ago</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-
-                    <div class="col-md-4">
-                        <a href="video.html" class="card-link text-decoration-none text-reset">
-                            <div class="card">
-                                <img src="static/preview.webp" class="card-img-top" alt="Video Preview">
-                                <div class="card-body">
-                                    <h5 class="card-title text-truncate" style="overflow: hidden;">Video Title</h5>
-                                    <p class="card-text">Author Name</p>
-                                    <div class="d-flex justify-content-between">
-                                        <span>123K views</span>
-                                        <span>5 days ago</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-
-                    <div class="col-md-4">
-                        <a href="video.html" class="card-link text-decoration-none text-reset">
-                            <div class="card">
-                                <img src="static/preview.webp" class="card-img-top" alt="Video Preview">
-                                <div class="card-body">
-                                    <h5 class="card-title text-truncate" style="overflow: hidden;">Video Title</h5>
-                                    <p class="card-text">Author Name</p>
-                                    <div class="d-flex justify-content-between">
-                                        <span>123K views</span>
-                                        <span>5 days ago</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-
-                    <div class="col-md-4">
-                        <a href="video.html" class="card-link text-decoration-none text-reset">
-                            <div class="card">
-                                <img src="static/preview.webp" class="card-img-top" alt="Video Preview">
-                                <div class="card-body">
-                                    <h5 class="card-title text-truncate" style="overflow: hidden;">Video Title</h5>
-                                    <p class="card-text">Author Name</p>
-                                    <div class="d-flex justify-content-between">
-                                        <span>123K views</span>
-                                        <span>5 days ago</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+	<script src="js/content_main.js"></script>
 </body>
 
 </html>
