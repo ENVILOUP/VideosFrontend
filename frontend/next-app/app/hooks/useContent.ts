@@ -1,7 +1,7 @@
 import { IVideoInfo } from "../types/IContent";
-import { getVideoInfoById } from "../api/content";
 import { useQueries, UseQueryOptions } from "@tanstack/react-query";
 import { useVideoRecommendations } from "./useRecommendations";
+import { contentApi } from "../api/content";
 
 type VideoQueryOptions = Omit<
   UseQueryOptions<IVideoInfo | undefined, Error>,
@@ -18,7 +18,7 @@ export const useVideoContent = (
       recommendationsIsSuccess && recommendationsData?.data
         ? recommendationsData.data.map((video) => ({
             queryKey: ["videoContent", video.video_uuid],
-            queryFn: () => getVideoInfoById(video.video_uuid),
+            queryFn: () => contentApi.getVideoInfoById(video.video_uuid),
             enabled: !!video.video_uuid,
             ...options,
           }))
