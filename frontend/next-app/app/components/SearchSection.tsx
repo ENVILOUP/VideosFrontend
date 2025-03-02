@@ -6,7 +6,7 @@ export default function SearchSection() {
   return (
     <>
       <Input className="w-52" type="text" placeholder="Введите запрос" />
-      <Button size="icon" variant="outline">
+      <Button className="hover:bg-slate-900 transition-colors duration-300 cursor-pointer" size="icon" variant="outline">
         <Search />
       </Button>
     </>
