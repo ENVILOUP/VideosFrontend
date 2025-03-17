@@ -1,4 +1,4 @@
-import { useVideoContent } from "@/app/hooks/useContent";
+import { useVideosContent } from "@/app/hooks/useContent";
 import VideoCard from "./VideoCard";
 import Link from "next/link";
 import SkeletonVideoCard from "./SkeletonVideoCard";
@@ -15,7 +15,7 @@ export default function VideosSection() {
     isSuccess,
     isError,
     error,
-  } = useVideoContent({
+  } = useVideosContent({
     retry: 3,
     refetchInterval: false,
   });

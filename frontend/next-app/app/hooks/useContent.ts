@@ -1,5 +1,5 @@
 import { IVideoInfo } from "../types/IContent";
-import { useQueries, UseQueryOptions } from "@tanstack/react-query";
+import { useQueries, useQuery, UseQueryOptions } from "@tanstack/react-query";
 import { useVideoRecommendations } from "./useRecommendations";
 import { contentApi } from "../api/content";
 
@@ -8,7 +8,7 @@ type VideoQueryOptions = Omit<
   "queryKey" | "queryFn"
 >;
 
-export const useVideoContent = (
+export const useVideosContent = (
   options?: VideoQueryOptions
 ) => {
   const { data: recommendationsData, isSuccess: recommendationsIsSuccess } = useVideoRecommendations();
@@ -38,4 +38,12 @@ export const useVideoContent = (
     data,
     error,
   };
+};
+
+export const useVideoContent = (id: string, options?: VideoQueryOptions) => {
+  return useQuery<IVideoInfo | undefined, Error>({
+    queryKey: ["videoContent", id],
+    queryFn: () => contentApi.getVideoInfoById(id),
+    ...options,
+  });
 };

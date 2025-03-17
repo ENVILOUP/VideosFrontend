@@ -30,7 +30,7 @@ export default function VideoCard({
         <div className="p-4 flex gap-2">
           <div className="flex items-start gap-3">
             <Image
-              src={"vercel.svg"}
+              src={"/vercel.svg"}
               width={50}
               height={50}
               alt="author"

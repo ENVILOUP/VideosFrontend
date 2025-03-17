@@ -2,8 +2,8 @@ import { Skeleton } from "../ui/skeleton";
 
 export default function SkeletonVideoCard() {
   return (
-    <div className="flex flex-col border rounded-lg overflow-hidden h-[450px]">
-      <div className="relative w-[500px] aspect-[16/9]">
+    <div className="flex flex-col border rounded-lg overflow-hidden min-h-[450px]">
+      <div className="relative min-w-[500px] w-full aspect-[16/9]">
         <Skeleton className="absolute inset-0 rounded-t-lg" />
       </div>
       <div className="p-4 flex gap-2">
