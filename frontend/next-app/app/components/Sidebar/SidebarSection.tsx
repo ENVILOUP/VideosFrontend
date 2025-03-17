@@ -1,4 +1,4 @@
-import { Calendar, Home, Inbox, Search, Settings } from "lucide-react"
+import { Calendar, Home, Inbox, Search, Settings } from "lucide-react";
 
 import {
   SidebarProvider,
@@ -7,7 +7,6 @@ import {
   SidebarContent,
   SidebarGroup,
   SidebarGroupContent,
-  SidebarGroupLabel,
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
@@ -15,7 +14,7 @@ import {
   SidebarHeader,
 } from "@/app/components/ui/sidebar";
 import Link from "next/link";
-import { items } from "./SidebarItems";
+import { sidebarGroups } from "./SidebarItems";
 import EnviloupLink from "../EnviloupLink";
 
 export default function SidebarSection() {
@@ -24,26 +23,32 @@ export default function SidebarSection() {
       <Sidebar>
         <SidebarHeader>
           <EnviloupLink />
-        </SidebarHeader> 
+        </SidebarHeader>
         <SidebarContent>
-          <SidebarGroup>
-            <SidebarGroupContent>
-              <SidebarMenu>
-                {items.map((item) => (
-                  <SidebarMenuItem key={item.title}>
-                    <SidebarMenuButton asChild>
-                      <Link href={item.url}>
-                        <span>{item.title}</span>
-                      </Link>
-                    </SidebarMenuButton>
-                  </SidebarMenuItem>
-                ))}
-              </SidebarMenu>
-            </SidebarGroupContent>
-          </SidebarGroup>
+          {sidebarGroups.map((group, index) => (
+            <SidebarGroup key={index} className="p-0 ml-2">
+              <SidebarGroupContent>
+                <SidebarMenu>
+                  {group.items.map((item) => (
+                    <SidebarMenuItem key={item.title}>
+                      <SidebarMenuButton asChild>
+                        <Link href={item.url}>
+                          <item.icon />
+                          <span>{item.title}</span>
+                        </Link>
+                      </SidebarMenuButton>
+                    </SidebarMenuItem>
+                  ))}
+                </SidebarMenu>
+                {index < sidebarGroups.length - 1 && (
+                  <div className="border-t-0 bg-gray-300 h-0.5 mt-2" />
+                )}
+              </SidebarGroupContent>
+            </SidebarGroup>
+          ))}
         </SidebarContent>
         <SidebarRail />
       </Sidebar>
-      </>
+    </>
   );
 }

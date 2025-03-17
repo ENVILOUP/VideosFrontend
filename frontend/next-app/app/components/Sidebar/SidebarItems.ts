@@ -1,40 +1,67 @@
+import { Clock, Heart, Home, Library, ListVideo, MessageCircleHeart, Settings, History } from "lucide-react";
+
 interface SidebarItem {
-    title: string;
-    url: string;
+  title: string;
+  icon: any;
+  url: string;
 }
 
-// Menu items.
-export const items: SidebarItem[] = [
+interface SidebarGroup {
+  items: SidebarItem[];
+}
+
+// Группированные пункты меню.
+export const sidebarGroups: SidebarGroup[] = [
   {
-    title: "Home",
-    url: "/",
+    items: [
+      {
+        title: "Главная",
+        icon: Home,
+        url: "/",
+      },
+      {
+        title: "Подписки",
+        icon: Library,
+        url: "/subscriptions",
+      },
+      {
+        title: "История",
+        icon: History,
+        url: "/history",
+      },
+    ],
   },
   {
-    title: "Subscriptions",
-    url: "/subscriptions",
+    items: [
+      {
+        title: "Плейлисты",
+        icon: ListVideo,
+        url: "/playlists",
+      },
+      {
+        title: "Смотреть позже",
+        icon: Clock,
+        url: "/watch-later",
+      },
+      {
+        title: "Понравившиеся",
+        icon: Heart,
+        url: "/liked",
+      },
+    ],
   },
   {
-    title: "History",
-    url: "/history",
+    items: [
+      {
+        title: "Настройки",
+        icon: Settings,
+        url: "/settings",
+      },
+      {
+        title: "Оставить отзыв",
+        icon: MessageCircleHeart,
+        url: "/feedback",
+      },
+    ],
   },
-  {
-    title: "Playlists",
-    url: "/playlists",
-  },
-  {
-    title: "Watch Later",
-    url: "/watch-later",
-  },
-  {
-    title: "Liked",
-    url: "/liked",
-  },
-  {
-    title: "Settings",
-    url: "/settings",
-  },
-  {
-    title: "Leave feedback",
-    url: "/feedback",
-  }
-]
+];
