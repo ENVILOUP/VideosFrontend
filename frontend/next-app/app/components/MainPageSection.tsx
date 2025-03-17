@@ -2,7 +2,7 @@ import SearchSection from "./SearchSection";
 import AuthButton from "./AuthButton";
 import VideosSection from "./Video/VideosSection";
 import SidebarSection from "./Sidebar/SidebarSection";
-import { SidebarProvider, SidebarTrigger } from "./ui/sidebar"
+import { SidebarProvider, SidebarTrigger } from "./ui/sidebar";
 
 export default function MainPageSection() {
   return (
@@ -11,7 +11,7 @@ export default function MainPageSection() {
         <div>
           <SidebarProvider>
             <SidebarSection />
-            <SidebarTrigger /> 
+            <SidebarTrigger />
           </SidebarProvider>
         </div>
         <div>
