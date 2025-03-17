@@ -1,8 +1,4 @@
-import { Calendar, Home, Inbox, Search, Settings } from "lucide-react";
-
 import {
-  SidebarProvider,
-  SidebarTrigger,
   Sidebar,
   SidebarContent,
   SidebarGroup,

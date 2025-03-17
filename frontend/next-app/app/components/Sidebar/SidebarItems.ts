@@ -1,8 +1,8 @@
-import { Clock, Heart, Home, Library, ListVideo, MessageCircleHeart, Settings, History } from "lucide-react";
+import { Clock, Heart, Home, Library, ListVideo, MessageCircleHeart, Settings, History, LucideIcon } from "lucide-react";
 
 interface SidebarItem {
   title: string;
-  icon: any;
+  icon: LucideIcon;
   url: string;
 }
 
@@ -10,7 +10,6 @@ interface SidebarGroup {
   items: SidebarItem[];
 }
 
-// Группированные пункты меню.
 export const sidebarGroups: SidebarGroup[] = [
   {
     items: [
