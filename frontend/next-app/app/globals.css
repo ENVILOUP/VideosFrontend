@@ -127,3 +127,42 @@
     @apply bg-background text-foreground;
   }
 }
+
+@layer utilities {
+  .prevent-overflow {
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    hyphens: auto;
+  }
+  
+  .responsive-img {
+    max-width: 100%;
+    height: auto;
+  }
+  
+  .responsive-text {
+    font-size: clamp(0.875rem, 0.8rem + 0.375vw, 1rem);
+  }
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+body, #__next {
+  min-height: 100vh;
+  min-height: 100svh;
+  width: 100%;
+}
+
+@media (max-width: 640px) {
+  .container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+}
