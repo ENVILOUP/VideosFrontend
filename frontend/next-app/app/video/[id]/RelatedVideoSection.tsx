@@ -36,41 +36,33 @@ export default function RelatedVideoSection() {
 
   if (isError) {
     console.error(error);
-    return <div>Error loading videos</div>;
-  }
-
-  if (isLoading) {
-    return (
-      <>
-        {Array.from({ length: 3 }).map((_, index) => (
-          <div
-            key={index}
-            className="flex flex-col border rounded-lg overflow-hidden mb-3 w-[450px]"
-          >
-            <SkeletonVideoCard />
-          </div>
-        ))}
-      </>
-    );
+    return <div className="p-4 text-red-400">Error loading videos</div>;
   }
 
   return (
-    <>
-      {displayedVideos.length === 0 &&
-        Array.from({ length: 3 }).map((_, index) => (
-          <div
-            key={index}
-            className="flex flex-col border rounded-lg overflow-hidden mb-3 w-[450px]"
+    <div className="space-y-4">
+      
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-4">
+        {isLoading &&
+          Array.from({ length: 3 }).map((_, index) => (
+            <div key={index} className="w-full">
+              <SkeletonVideoCard />
+            </div>
+          ))}
+          
+        {displayedVideos.length === 0 && !isLoading &&
+          Array.from({ length: 3 }).map((_, index) => (
+            <div key={index} className="w-full">
+              <SkeletonVideoCard />
+            </div>
+          ))}
+          
+        {displayedVideos.map((video, index) => (
+          <Link 
+            key={index} 
+            href={`/video/${video.data.video_uuid}`}
+            className="block w-full"
           >
-            <SkeletonVideoCard />
-          </div>
-        ))}
-      {displayedVideos.map((video, index) => (
-        <div
-          key={index}
-          className="mx-auto flex flex-col border rounded-lg overflow-hidden mb-3 w-[450px]"
-        >
-          <Link href={`/video/${video.data.video_uuid}`}>
             <VideoCard
               video_uuid={video.data.video_uuid}
               title={video.data.title}
@@ -79,19 +71,19 @@ export default function RelatedVideoSection() {
               thumbnail_url={video.data.thumbnail_url}
             />
           </Link>
-        </div>
-      ))}
+        ))}
+      </div>
 
       {displayedVideos.length < newVideos.length && (
-        <div className="flex justify-end">
+        <div className="flex justify-center lg:justify-end mt-4">
           <Button
             onClick={handleLoadMore}
-            className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mb-4 transition-colors duration-300 cursor-pointer"
+            className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded transition-colors duration-300"
           >
             Load more
           </Button>
         </div>
       )}
-    </>
+    </div>
   );
 }

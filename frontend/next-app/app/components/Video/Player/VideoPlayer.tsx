@@ -39,11 +39,13 @@ export const VideoPlayer = ({
   }, [videoUrl, memorizedOnHlsReady, videoRef]);
 
   return (
-    <video
-      ref={videoRef}
-      className="w-full max-h-[500px] h-auto rounded-t-lg bg-zinc-900/60"
-      poster={thumbnailUrl}
-      playsInline
-    />
+    <div className="relative w-full aspect-video">
+      <video
+        ref={videoRef}
+        className="w-full h-full object-contain rounded-t-lg bg-zinc-900/60"
+        poster={thumbnailUrl}
+        playsInline
+      />
+    </div>
   );
 };

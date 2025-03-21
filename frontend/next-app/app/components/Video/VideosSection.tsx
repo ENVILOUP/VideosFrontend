@@ -38,7 +38,7 @@ export default function VideosSection() {
   return (
     <>
       <div className="mx-auto">
-        <div className="grid grid-cols-3 gap-6 auto-rows-fr p-6">
+        <div className="grid grid-cols-3 gap-6 auto-rows-fr p-6 pl-3.5">
           {displayedVideos.length === 0 &&
             Array.from({ length: 9 }).map((_, index) => (
               <SkeletonVideoCard key={index} />

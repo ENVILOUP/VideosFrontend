@@ -4,7 +4,6 @@ import { use, useCallback, useRef, useState } from "react";
 import { VideoPlayer } from "../../components/Video/Player/VideoPlayer";
 import { VideoControls } from "../../components/Video/Player/VideoControls";
 import { VideoInfo } from "../../components/Video/Player/VideoInfo";
-import SearchSection from "@/app/components/SearchSection";
 import RelatedVideoSection from "./RelatedVideoSection";
 import { Skeleton } from "@/app/components/ui/skeleton";
 
@@ -32,35 +31,36 @@ export default function VideoContentSection({ params }: VideoContentProps) {
 
   if (isError) {
     console.error(error);
-    return <div>Error loading video</div>;
+    return <div className="p-4 text-red-400">Error loading video</div>;
   }
 
   return (
-    <div className="relative w-full rounded-lg overflow-hidden">
-      <div className="flex justify-center mt-2.5 mb-6 gap-2">
-        <SearchSection />
-      </div>
-      <div className="flex ml-2">
-        {isLoading && (
-          <div className="h-[450px] w-full mr-3">
-            <div className="relative aspect-[16/9]">
-              <Skeleton className="absolute inset-0 rounded-t-lg" />
+    <div className="max-w-[2000px] mx-auto">
+      <div className="flex flex-col lg:flex-row gap-4">
+        <div className="w-full lg:w-2/3 xl:w-3/4">
+          {isLoading ? (
+            <div>
+              <div className="relative aspect-video">
+                <Skeleton className="absolute inset-0 rounded-lg" />
+              </div>
+              <Skeleton className="h-12 w-full mt-4 rounded-lg" />
+              <Skeleton className="h-24 w-full mt-4 rounded-lg" />
             </div>
-          </div>
-        )}
-        {isSuccess && data?.data && (
-          <div className="w-full mr-3">
-            <VideoPlayer
-              videoUrl={data.data.video_url}
-              thumbnailUrl={data.data.thumbnail_url}
-              onHlsReady={handleHlsReady}
-              videoRef={videoRef}
-            />
-            <VideoControls video={videoRef.current} hls={hls} id={videoId} />
-            <VideoInfo videoData={data.data} />
-          </div>
-        )}
-        <div className="mr-2">
+          ) : isSuccess && data?.data ? (
+            <div>
+              <VideoPlayer
+                videoUrl={data.data.video_url}
+                thumbnailUrl={data.data.thumbnail_url}
+                onHlsReady={handleHlsReady}
+                videoRef={videoRef}
+              />
+              <VideoControls video={videoRef.current} hls={hls} id={videoId} />
+              <VideoInfo videoData={data.data} />
+            </div>
+          ) : null}
+        </div>
+        
+        <div className="w-full lg:w-1/3 xl:w-1/4">
           <RelatedVideoSection />
         </div>
       </div>
