@@ -3,12 +3,10 @@ import { Skeleton } from "@/app/components/ui/skeleton"
 export default function RelatedSkeletonVideoCard() {
   return (
     <div className="flex border rounded-lg overflow-hidden bg-white dark:bg-zinc-900 h-24">
-      {/* Thumbnail skeleton */}
       <div className="relative w-46 flex-shrink-0">
         <Skeleton className="h-full w-full" />
       </div>
 
-      {/* Content skeleton */}
       <div className="p-2 flex flex-col justify-between flex-1">
         <div>
           <Skeleton className="h-3 w-full mb-1" />

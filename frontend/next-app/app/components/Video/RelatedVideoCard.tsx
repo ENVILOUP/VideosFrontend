@@ -17,7 +17,6 @@ export default function RelatedVideoCard({
 }: RelatedVideoCardProps) {
   return (
     <div className="flex border rounded-lg overflow-hidden hover:bg-slate-50 dark:hover:bg-zinc-800 transition-all duration-300 bg-white dark:bg-zinc-900 h-24">
-      {/* Thumbnail - smaller with fixed width */}
       <div className="relative w-46 flex-shrink-0">
         <Image
           className="object-cover"
@@ -29,7 +28,6 @@ export default function RelatedVideoCard({
         />
       </div>
 
-      {/* Content */}
       <div className="p-2 flex flex-col justify-between min-w-0 flex-1">
         <div className="flex flex-col justify-between h-full">
           <h3 className="text-xs font-medium line-clamp-3 break-words">{title}</h3>

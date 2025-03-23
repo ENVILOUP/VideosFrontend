@@ -41,11 +41,9 @@ export default function RelatedVideoSection() {
   return (
     <div className="space-y-3 h-full">
       {" "}
-      {/* Reduced space-y from 4 to 3 */}
       <h3 className="font-medium text-sm mb-2">Рекомендуемые видео</h3>
       <div className="flex flex-col gap-3">
         {" "}
-        {/* Changed from grid to flex column with smaller gap */}
         {isLoading &&
           Array.from({ length: 5 }).map((_, index) => (
             <div key={`loading-${index}`} className="w-full">
@@ -78,7 +76,6 @@ export default function RelatedVideoSection() {
       {displayedVideos.length < (newVideos?.length || 0) && (
         <div className="flex justify-center lg:justify-end mt-2">
           {" "}
-          {/* Reduced margin-top */}
           <Button onClick={handleLoadMore} variant="outline" size="sm" className="text-xs cursor-pointer">
             Загрузить еще
           </Button>
