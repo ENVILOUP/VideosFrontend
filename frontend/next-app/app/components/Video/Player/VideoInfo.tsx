@@ -48,23 +48,23 @@ export const VideoInfo = ({ videoData }: VideoInfoProps) => {
 
   return (
     <div className="w-full mt-4">
-      <div className="bg-white rounded-lg shadow-md p-6">
-        <h5 className="text-2xl font-bold text-gray-800 mb-2">
+      <div className="bg-gray-900 rounded-lg shadow-md p-6">
+        <h5 className="text-2xl font-bold text-slate-200 mb-2">
           {videoData.title}
         </h5>
         <div className="flex justify-between">
-          <p className="text-gray-600 mb-2 flex">
+          <p className="text-gray-300 mb-2 flex">
             <Image
               src="/vercel.svg"
               width={50}
               height={50}
               alt="author"
-              className="rounded-full bg-gray-200 mr-2"
+              className="rounded-full bg-gray-900/80 mr-2"
             />
             John Doe
           </p>
           <div className="flex items-center space-x-2">
-            <div className="flex items-center space-x-2 bg-slate-100 px-2.5 py-1.5 rounded-2xl text-gray-400">
+            <div className="flex items-center space-x-2 bg-slate-800 px-2.5 py-1.5 rounded-2xl text-gray-400">
               <ThumbsUp className="h-6 w-6 cursor-pointer text-gray-400 hover:text-blue-500 transition-colors duration-300" />
               <Separator orientation="vertical" className="h-6" />
               <ThumbsDown className="h-6 w-6 cursor-pointer text-gray-400 hover:text-red-500 transition-colors duration-300" />
@@ -85,7 +85,7 @@ export const VideoInfo = ({ videoData }: VideoInfoProps) => {
             </Button>
           </div>
         </div>
-        <div className="flex items-center space-x-6 text-gray-500">
+        <div className="flex items-center space-x-6 text-gray-300">
           <div className="flex items-center space-x-1">
             <Eye size={18} />
             <span>2028 Просмотров</span>
@@ -95,7 +95,7 @@ export const VideoInfo = ({ videoData }: VideoInfoProps) => {
             <span>5 дней назад</span>
           </div>
         </div>
-        <p className="text-gray-600 mt-4 leading-relaxed">
+        <p className="text-gray-300 mt-4 leading-relaxed">
           {renderDescription(videoData.description, handleTimecodeClick)}
         </p>
       </div>

@@ -8,18 +8,17 @@ import {
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
-  SidebarRail,
-  useSidebar
+  useSidebar,
 } from "@/app/components/ui/sidebar";
 import Link from "next/link";
 import { sidebarGroups } from "./SidebarItems";
-import { useEffect } from "react";
+import React, { useEffect } from "react";
 import { usePathname } from "next/navigation";
 
 export default function SidebarSection() {
   const { isMobile, openMobile, setOpenMobile } = useSidebar();
   const pathname = usePathname();
-  
+
   useEffect(() => {
     if (isMobile && openMobile) {
       setOpenMobile(false);
@@ -29,7 +28,7 @@ export default function SidebarSection() {
   const renderSidebarContent = () => (
     <SidebarContent className="mt-2">
       {sidebarGroups.map((group, index) => (
-        <SidebarGroup key={index} className="p-0 pl-2">
+        <SidebarGroup key={index} className="p-0 px-2">
           <SidebarGroupContent>
             <SidebarMenu>
               {group.items.map((item) => {
@@ -46,7 +45,7 @@ export default function SidebarSection() {
                         href={item.url}
                         className="flex items-center w-full"
                       >
-                        <item.icon className="size-5 flex-shrink-0" />
+                        <item.icon className="size-4 flex-shrink-0" />
                         <span className="ml-2 truncate">{item.title}</span>
                       </Link>
                     </SidebarMenuButton>
@@ -55,7 +54,7 @@ export default function SidebarSection() {
               })}
             </SidebarMenu>
             {index < sidebarGroups.length - 1 && (
-              <div className="border-t-0 bg-gray-300 dark:bg-gray-700 h-0.5 mt-2 mr-2 opacity-70" />
+              <div className="border-t-0 bg-gray-300 dark:bg-gray-700 h-0.5 mt-2 opacity-70" />
             )}
           </SidebarGroupContent>
         </SidebarGroup>
@@ -64,12 +63,8 @@ export default function SidebarSection() {
   );
 
   return (
-    <Sidebar 
-      variant="sidebar" 
-      collapsible="icon"
-    >
+    <Sidebar variant="sidebar" collapsible="icon">
       {renderSidebarContent()}
-      <SidebarRail />
     </Sidebar>
   );
 }

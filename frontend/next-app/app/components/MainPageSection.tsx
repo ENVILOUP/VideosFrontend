@@ -26,7 +26,7 @@ export default function MainPageSection() {
             </div>
           </header>
 
-          <main className="p-2 sm:p-4">
+          <main className="p-2 sm:p-4 pt-0 sm:pt-0">
             <VideosSection />
           </main>
         </SidebarInset>

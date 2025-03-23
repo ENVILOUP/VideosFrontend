@@ -1,10 +1,10 @@
 import { useVideosContent } from "@/app/hooks/useContent";
 import VideoCard from "./VideoCard";
 import Link from "next/link";
-import SkeletonVideoCard from "./SkeletonVideoCard";
 import { Button } from "../ui/button";
 import { useEffect, useState } from "react";
 import { IVideoInfo } from "@/app/types/IContent";
+import SkeletonVideoCard from "./Skeletons/SkeletonVideoCard";
 
 export default function VideosSection() {
   const [displayedVideos, setDisplayedVideos] = useState<IVideoInfo[]>([]);
@@ -32,13 +32,13 @@ export default function VideosSection() {
 
   if (isError) {
     console.error(error);
-    return <div>Error loading videos</div>;
+    return <div className="p-4 text-center text-red-500">Error loading videos</div>;
   }
 
   return (
     <>
       <div className="mx-auto">
-        <div className="grid grid-cols-3 gap-6 auto-rows-fr p-6 pl-3.5">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 auto-rows-fr p-6 pt-4 pl-3.5">
           {displayedVideos.length === 0 &&
             Array.from({ length: 9 }).map((_, index) => (
               <SkeletonVideoCard key={index} />

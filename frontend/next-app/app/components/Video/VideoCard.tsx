@@ -29,7 +29,7 @@ export default function VideoCard({
             priority={false}
           />
         </div>
-        <div className="p-3 flex gap-2">
+        <div className="p-3 flex gap-2 h-full">
           <div className="flex-shrink-0">
             <div className="relative w-10 h-10">
               <Image
@@ -42,12 +42,18 @@ export default function VideoCard({
             </div>
           </div>
 
-          <div className="flex flex-col min-w-0">
+          <div className="flex flex-col min-w-0 justify-between h-full">
             <h2 className="text-sm sm:text-base font-semibold line-clamp-2 break-words">
               {title}
             </h2>
-            <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-400">Author</p>
-            <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-400">video stats info</p>
+            <div>
+              <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-400">
+                Author
+              </p>
+              <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-400">
+                video stats info
+              </p>
+            </div>
           </div>
         </div>
       </div>

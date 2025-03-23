@@ -6,7 +6,7 @@ export default function EnviloupLink() {
     <>
       <Link href="/" className="flex items-center gap-2">
         <Image src="/logo.png" alt="enviloup" width={50} height={50} />
-        <div className="text-2xl">Enviloup</div>
+        <div className="text-2xl">Videos</div>
       </Link>
     </>
   );
