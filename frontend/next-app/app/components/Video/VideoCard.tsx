@@ -17,32 +17,43 @@ export default function VideoCard({
 }: VideoCardProps) {
   return (
     <>
-      <div className="flex flex-col border rounded-lg overflow-hidden h-full hover:scale-105 transition-all duration-300">
-        <div className="relative w-full aspect-[16/9]">
+      <div className="flex flex-col border rounded-lg overflow-hidden h-full hover:scale-[1.02] transition-all duration-300 bg-white dark:bg-zinc-900">
+        <div className="relative w-full aspect-video">
           <Image
-            className="rounded-t-lg"
+            className="rounded-t-lg object-cover"
             layout="fill"
             objectFit="cover"
+            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
             src={thumbnail_url}
             alt={title}
+            priority={false}
           />
         </div>
-        <div className="p-4 flex gap-2">
-          <div className="flex items-start gap-3">
-            <Image
-              src={"vercel.svg"}
-              width={50}
-              height={50}
-              alt="author"
-              className="rounded-full"
-            />
+        <div className="p-3 flex gap-2 h-full">
+          <div className="flex-shrink-0">
+            <div className="relative w-10 h-10">
+              <Image
+                src={"/vercel.svg"}
+                width={50}
+                height={50}
+                alt="author"
+                className="rounded-full object-cover"
+              />
+            </div>
           </div>
-          <div className="flex flex-col flex-1">
-            <h2 className="text-lg font-semibold max-h-14 overflow-hidden line-clamp-2">
+
+          <div className="flex flex-col min-w-0 justify-between h-full">
+            <h2 className="text-sm sm:text-base font-semibold line-clamp-2 break-words">
               {title}
             </h2>
-            <p className="text-slate-600">Author</p>
-            <p className="text-slate-600">video stats info</p>
+            <div>
+              <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-400">
+                Author
+              </p>
+              <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-400">
+                video stats info
+              </p>
+            </div>
           </div>
         </div>
       </div>
