@@ -26,7 +26,7 @@ export default function SidebarSection() {
   }, [pathname, isMobile, openMobile, setOpenMobile]);
 
   const renderSidebarContent = () => (
-    <SidebarContent className="mt-2">
+    <SidebarContent className="mt-2 w-fit">
       {sidebarGroups.map((group, index) => (
         <SidebarGroup key={index} className="p-0 px-2">
           <SidebarGroupContent>
@@ -63,7 +63,7 @@ export default function SidebarSection() {
   );
 
   return (
-    <Sidebar variant="sidebar" collapsible="icon">
+    <Sidebar variant="sidebar" collapsible="icon" className="w-fit">
       {renderSidebarContent()}
     </Sidebar>
   );
