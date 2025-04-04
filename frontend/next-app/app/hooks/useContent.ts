@@ -2,6 +2,7 @@ import { IVideoInfo } from "../types/IContent";
 import { useQueries, useQuery, UseQueryOptions } from "@tanstack/react-query";
 import { useVideoRecommendations } from "./useRecommendations";
 import { contentApi } from "../api/content";
+import { IRecommendationVideoParams } from "../types/IRecommendations";
 
 type VideoQueryOptions = Omit<
   UseQueryOptions<IVideoInfo | undefined, Error>,
@@ -9,14 +10,16 @@ type VideoQueryOptions = Omit<
 >;
 
 export const useVideosContent = (
+  params: IRecommendationVideoParams,
   options?: VideoQueryOptions
 ) => {
-  const { data: recommendationsData, isSuccess: recommendationsIsSuccess } = useVideoRecommendations();
+  const { data: recommendationsData, isSuccess: recommendationsIsSuccess } =
+    useVideoRecommendations(params);
   
   const videoQueries = useQueries({
     queries:
       recommendationsIsSuccess && recommendationsData?.data
-        ? recommendationsData.data.map((video) => ({
+        ? recommendationsData.data.items.map((video) => ({
             queryKey: ["videoContent", video.video_uuid],
             queryFn: () => contentApi.getVideoInfoById(video.video_uuid),
             enabled: !!video.video_uuid,
