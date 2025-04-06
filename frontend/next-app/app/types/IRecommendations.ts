@@ -11,6 +11,6 @@ export interface IRecommendationVideosInfo {
 };
 
 export interface IRecommendationVideoParams {
-  page_size: number;
-  page: number;
+  page_size: number,
+  page: number,
 };

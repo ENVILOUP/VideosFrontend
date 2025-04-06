@@ -1,5 +1,8 @@
 import { useQuery, UseQueryOptions } from "@tanstack/react-query";
-import { IRecommendationVideoParams, IRecommendationVideosInfo } from "../types/IRecommendations";
+import {
+  IRecommendationVideoParams,
+  IRecommendationVideosInfo,
+} from "../types/IRecommendations";
 import { recommendationsApi } from "../api/recommendations";
 
 type VideoQueryOptions = Omit<
@@ -9,7 +12,7 @@ type VideoQueryOptions = Omit<
 
 export const useVideoRecommendations = (
   params: IRecommendationVideoParams,
-  options?: VideoQueryOptions
+  options?: VideoQueryOptions,
 ) => {
   return useQuery<IRecommendationVideosInfo | undefined, Error>({
     queryKey: ["videoRecommendations", params],
