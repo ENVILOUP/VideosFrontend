@@ -4,8 +4,8 @@ import VideoContentSection from "./VideoContentSection";
 import { SidebarProvider, SidebarTrigger, SidebarInset } from "@/app/components/ui/sidebar";
 import SidebarSection from "@/app/components/Sidebar/SidebarSection";
 import SearchSection from "@/app/components/SearchSection";
-import AuthButton from "@/app/components/AuthButton";
 import EnviloupLink from "@/app/components/EnviloupLink";
+import AuthSection from "@/app/components/Auth/AuthSection";
 
 interface VideoPageProps {
   params: Promise<{id: string}>
@@ -30,8 +30,8 @@ export default function VideoPage({ params }: VideoPageProps) {
                 <SearchSection />
               </div>
 
-              <div>
-                <AuthButton />
+							<div>
+								<AuthSection />
               </div>
             </header>
 

@@ -1,9 +1,11 @@
+"use client";
+
 import SearchSection from "./SearchSection";
-import AuthButton from "./AuthButton";
 import VideosSection from "./Video/VideosSection";
 import SidebarSection from "./Sidebar/SidebarSection";
 import { SidebarProvider, SidebarTrigger, SidebarInset } from "./ui/sidebar";
 import EnviloupLink from "./EnviloupLink";
+import AuthSection from "./Auth/AuthSection";
 
 export default function MainPageSection() {
   return (
@@ -21,8 +23,8 @@ export default function MainPageSection() {
               <SearchSection />
             </div>
 
-            <div>
-              <AuthButton />
+						<div>
+							<AuthSection />
             </div>
           </header>
 
