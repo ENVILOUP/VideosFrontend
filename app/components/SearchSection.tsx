@@ -4,6 +4,7 @@ import { Input } from "./ui/input";
 import { useEffect, useState } from "react";
 import { useSearch } from "../hooks/useSearch";
 import { ISearchParams } from "../types/ISearch";
+import { useSearchStore } from "../stores/searchStore";
 
 export default function SearchSection() {
   const [searchValue, setSearchValue] = useState('');
@@ -18,7 +19,7 @@ export default function SearchSection() {
 
   useEffect(() => {
     if (data) {
-      console.log("Result:", data);
+      useSearchStore.setState({ searchStore: data }); 
     }
   }, [data]);
 

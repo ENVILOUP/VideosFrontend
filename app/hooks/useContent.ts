@@ -50,3 +50,32 @@ export const useVideoContent = (id: string, options?: VideoQueryOptions) => {
     ...options,
   });
 };
+
+export const useVideoContentByIds = (
+  ids: string[],
+  options?: VideoQueryOptions
+) => {
+  const videoQueries = useQueries({
+    queries: ids.map((id) => ({
+      queryKey: ["videoContent", id],
+      queryFn: () => contentApi.getVideoInfoById(id),
+      enabled: !!id,
+      ...options,
+    })),
+  });
+
+  const isLoading = videoQueries.some((query) => query.isLoading);
+  const isSuccess = videoQueries.every((query) => query.isSuccess);
+  const isError = videoQueries.some((query) => query.isError);
+  const data = videoQueries.map((query) => query.data).filter(Boolean) as IVideoInfo[];
+  const error = videoQueries.find((query) => query.isError)?.error || null;
+
+  return {
+    isLoading,
+    isSuccess,
+    isError,
+    data,
+    error,
+  };
+};
+
