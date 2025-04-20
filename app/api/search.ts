@@ -1,11 +1,14 @@
-import { ISearchInfo, ISearchParams } from "../types/ISearch";
+import {
+  ISearchSuccessResponse,
+  ISearchRequest,
+} from "../types/ISearch";
 
 class SearchApi {
   private readonly apiUrl = "http://search.api.enviloup.localhost/api/v1";
 
   getVideoIds = async (
-    params: ISearchParams,
-  ): Promise<ISearchInfo | undefined> => {
+    params: ISearchRequest,
+  ): Promise<ISearchSuccessResponse | undefined> => {
     try {
       const queryParams = new URLSearchParams();
       for (const [key, value] of Object.entries(params)) {

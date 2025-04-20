@@ -11,11 +11,11 @@ type VideoQueryOptions = Omit<
 
 export const useVideosContent = (
   params: IRecommendationVideoParams,
-  options?: VideoQueryOptions
+  options?: VideoQueryOptions,
 ) => {
   const { data: recommendationsData, isSuccess: recommendationsIsSuccess } =
     useVideoRecommendations(params);
-  
+
   const videoQueries = useQueries({
     queries:
       recommendationsIsSuccess && recommendationsData?.data
@@ -31,7 +31,9 @@ export const useVideosContent = (
   const isLoading = videoQueries.some((query) => query.isLoading);
   const isSuccess = videoQueries.every((query) => query.isSuccess);
   const isError = videoQueries.some((query) => query.isError);
-  const data = videoQueries.map((query) => query.data).filter(Boolean) as IVideoInfo[];
+  const data = videoQueries
+    .map((query) => query.data)
+    .filter(Boolean) as IVideoInfo[];
   const error = videoQueries.find((query) => query.isError)?.error || null;
 
   return {
@@ -53,7 +55,7 @@ export const useVideoContent = (id: string, options?: VideoQueryOptions) => {
 
 export const useVideoContentByIds = (
   ids: string[],
-  options?: VideoQueryOptions
+  options?: VideoQueryOptions,
 ) => {
   const videoQueries = useQueries({
     queries: ids.map((id) => ({
@@ -67,7 +69,9 @@ export const useVideoContentByIds = (
   const isLoading = videoQueries.some((query) => query.isLoading);
   const isSuccess = videoQueries.every((query) => query.isSuccess);
   const isError = videoQueries.some((query) => query.isError);
-  const data = videoQueries.map((query) => query.data).filter(Boolean) as IVideoInfo[];
+  const data = videoQueries
+    .map((query) => query.data)
+    .filter(Boolean) as IVideoInfo[];
   const error = videoQueries.find((query) => query.isError)?.error || null;
 
   return {
@@ -78,4 +82,3 @@ export const useVideoContentByIds = (
     error,
   };
 };
-

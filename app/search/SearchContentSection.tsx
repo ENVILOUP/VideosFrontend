@@ -1,27 +1,43 @@
 "use client";
 
-import { useVideosContent } from "@/app/hooks/useContent";
-import VideoCard from "./VideoCard";
-import Link from "next/link";
 import { useCallback, useEffect, useRef, useState } from "react";
-import type { IVideoInfo } from "@/app/types/IContent";
-import SkeletonVideoCard from "./Skeletons/SkeletonVideoCard";
-import type { IRecommendationVideoParams } from "@/app/types/IRecommendations";
+import { useSearch } from "../hooks/useSearch";
+import { useSearchParams } from "next/navigation";
+import { useVideoContentByIds } from "../hooks/useContent";
+import { IVideoInfo } from "../types/IContent";
+import SkeletonVideoCard from "../components/Video/Skeletons/SkeletonVideoCard";
+import Link from "next/link";
+import VideoCard from "../components/Video/VideoCard";
 
-export default function VideosSection() {
+export default function SearchContentSection() {
+  const searchParams = useSearchParams();
+  const query = searchParams.get("query");
+  const page = searchParams.get("page");
+  const pageSize = searchParams.get("page_size");
+
   const [displayedVideos, setDisplayedVideos] = useState<IVideoInfo[]>([]);
-  const [page, setPage] = useState(1);
   const [isInitialLoading, setIsInitialLoading] = useState(true);
   const prevVideosRef = useRef<IVideoInfo[]>([]);
   const observerRef = useRef<IntersectionObserver | null>(null);
   const loadMoreRef = useRef<HTMLDivElement | null>(null);
   const containerRef = useRef<HTMLDivElement>(null);
 
-  const params: IRecommendationVideoParams = {
-    page_size: 15,
-    page: page,
-  };
+  const searchResponse = useSearch({
+    query: String(query),
+    page: Number(page),
+    page_size: Number(pageSize),
+  });
 
+  const data = searchResponse.data?.data;
+  const ids = data?.results.map((item) => item) || [];
+  console.log("Search page IDs", ids);
+
+  useEffect(() => {
+    if (data) {
+      console.log("Search page data", data);
+      console.log("Search page IDs", ids);
+    }
+  }, [data, ids]);
 
   const {
     data: newVideos = [],
@@ -29,10 +45,10 @@ export default function VideosSection() {
     isSuccess,
     isError,
     error,
-  } = useVideosContent(params, {
-        retry: 3,
-        refetchInterval: false,
-      });
+  } = useVideoContentByIds(ids, {
+    retry: 3,
+    refetchInterval: false,
+  });
 
   useEffect(() => {
     if (isSuccess && isInitialLoading) {
@@ -109,7 +125,7 @@ export default function VideosSection() {
     <div className="mx-auto">
       <div
         ref={containerRef}
-        className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 p-6 pt-4 pl-3.5"
+        className="grid grid-rows gap-4 sm:gap-6 p-6 pt-4 pl-3.5"
       >
         {displayedVideos.length === 0 &&
           Array.from({ length: 9 }).map((_, index) => (
@@ -151,4 +167,11 @@ export default function VideosSection() {
       )}
     </div>
   );
+}
+function setIsInitialLoading(arg0: boolean) {
+  throw new Error("Function not implemented.");
+}
+
+function setPage(arg0: (prev: any) => any) {
+  throw new Error("Function not implemented.");
 }
