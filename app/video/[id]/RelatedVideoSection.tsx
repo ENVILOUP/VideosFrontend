@@ -3,17 +3,17 @@
 import RelatedSkeletonVideoCard from "@/app/components/Video/Skeletons/RelatedSkeletonVideoCard";
 import RelatedVideoCard from "@/app/components/Video/RelatedVideoCard";
 import { useVideosContent } from "@/app/hooks/useContent";
-import type { IVideoInfo } from "@/app/types/IContent";
+import type { IVideoInfoSuccessResponse } from "@/app/types/IContent";
 import Link from "next/link";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { IRecommendationVideoParams } from "@/app/types/IRecommendations";
 
 export default function RelatedVideoSection() {
-  const [displayedVideos, setDisplayedVideos] = useState<IVideoInfo[]>([]);
+  const [displayedVideos, setDisplayedVideos] = useState<IVideoInfoSuccessResponse[]>([]);
   const [page, setPage] = useState(1);
   const [isInitialLoading, setIsInitialLoading] = useState(true);
   const videosPerPage = 5;
-  const prevVideosRef = useRef<IVideoInfo[]>([]);
+  const prevVideosRef = useRef<IVideoInfoSuccessResponse[]>([]);
 
   const observerRef = useRef<IntersectionObserver | null>(null);
   const loadMoreRef = useRef<HTMLDivElement | null>(null);

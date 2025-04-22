@@ -1,35 +1,32 @@
-import type { FieldErrors, FieldValues, Path, UseFormRegister } from "react-hook-form"
-import { Input } from "@/app/components/ui/input"
-import { Label } from "@/app/components/ui/label"
-import { cn } from "@/app/lib/utils"
+import type { FieldErrors, FieldValues, Path, UseFormRegister } from "react-hook-form";
+import { Label } from "@/app/components/ui/label";
+import { cn } from "@/app/lib/utils";
+import { Textarea } from "@/app/components/ui/textarea";
 
-interface FormInputProps<T extends FieldValues> {
-  label: string
-  name: Path<T>
-  register: UseFormRegister<T>
-	errors: FieldErrors<T>
-	type?: string
-  placeholder?: string
-	disabled?: boolean
+interface FormTextareaProps<T extends FieldValues> {
+  label: string;
+  name: Path<T>;
+  register: UseFormRegister<T>;
+  errors: FieldErrors<T>;
+  placeholder?: string;
+  disabled?: boolean;
 }
 
-export function FormInput<T extends FieldValues>({
+export function FormTextarea<T extends FieldValues>({
   label,
   name,
   register,
   errors,
-	placeholder,
-	type = "text",
+  placeholder,
   disabled = false,
-}: FormInputProps<T>) {
+}: FormTextareaProps<T>) {
   return (
     <div className="space-y-1 px-1">
       <Label htmlFor={name} className="text-sm font-medium">
         {label}
       </Label>
-      <Input
+      <Textarea
         id={name}
-        type={type}
         placeholder={placeholder}
         {...register(name)}
         className={cn(
@@ -40,6 +37,5 @@ export function FormInput<T extends FieldValues>({
       />
       {errors[name] && <p className="text-red-500 text-xs mt-1">{errors[name]?.message as string}</p>}
     </div>
-  )
+  );
 }
-

@@ -1,11 +1,11 @@
-import { IVideoInfo } from "../types/IContent";
-import { useQueries, useQuery, UseQueryOptions } from "@tanstack/react-query";
+import { ICreateContentErrorResponse, ICreateContentRequest, ICreateContentSuccessResponse, IVideoInfoSuccessResponse } from "../types/IContent";
+import { useMutation, UseMutationResult, useQueries, useQuery, UseQueryOptions } from "@tanstack/react-query";
 import { useVideoRecommendations } from "./useRecommendations";
 import { contentApi } from "../api/content";
 import { IRecommendationVideoParams } from "../types/IRecommendations";
 
 type VideoQueryOptions = Omit<
-  UseQueryOptions<IVideoInfo | undefined, Error>,
+  UseQueryOptions<IVideoInfoSuccessResponse | undefined, Error>,
   "queryKey" | "queryFn"
 >;
 
@@ -31,7 +31,7 @@ export const useVideosContent = (
   const isLoading = videoQueries.some((query) => query.isLoading);
   const isSuccess = videoQueries.every((query) => query.isSuccess);
   const isError = videoQueries.some((query) => query.isError);
-  const data = videoQueries.map((query) => query.data).filter(Boolean) as IVideoInfo[];
+  const data = videoQueries.map((query) => query.data).filter(Boolean) as IVideoInfoSuccessResponse[];
   const error = videoQueries.find((query) => query.isError)?.error || null;
 
   return {
@@ -44,9 +44,25 @@ export const useVideosContent = (
 };
 
 export const useVideoContent = (id: string, options?: VideoQueryOptions) => {
-  return useQuery<IVideoInfo | undefined, Error>({
+  return useQuery<IVideoInfoSuccessResponse | undefined, Error>({
     queryKey: ["videoContent", id],
     queryFn: () => contentApi.getVideoInfoById(id),
     ...options,
+  });
+};
+
+export const useCreateVideoContent = (): UseMutationResult<
+  ICreateContentSuccessResponse,
+  ICreateContentErrorResponse,
+  ICreateContentRequest
+> => {
+  return useMutation({
+    mutationFn: (data: ICreateContentRequest) => contentApi.createVideo(data),
+    onSuccess: (data) => {
+      console.log(data.data);
+    },
+    onError: (error) => {
+      console.error(error);
+    },
   });
 };
