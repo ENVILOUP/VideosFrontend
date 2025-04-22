@@ -1,3 +1,5 @@
+"use client";
+
 import { AuthDialog } from "./AuthDialog";
 import { useAuthStore } from "@/app/stores/authStore";
 import { useEffect, useState } from "react";

@@ -28,7 +28,7 @@ export function FormPasswordInput<T extends FieldValues>({
   const [showPassword, setShowPassword] = useState(false)
 
   return (
-    <div className="space-y-2 px-1">
+    <div className="space-y-1 px-1">
       <Label htmlFor={name} className="text-sm font-medium">
         {label}
       </Label>

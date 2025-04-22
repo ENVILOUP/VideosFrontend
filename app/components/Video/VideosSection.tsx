@@ -4,15 +4,15 @@ import { useVideosContent } from "@/app/hooks/useContent"
 import VideoCard from "./VideoCard"
 import Link from "next/link"
 import { useCallback, useEffect, useRef, useState } from "react"
-import type { IVideoInfo } from "@/app/types/IContent"
+import type { IVideoInfoSuccessResponse } from "@/app/types/IContent"
 import SkeletonVideoCard from "./Skeletons/SkeletonVideoCard"
 import type { IRecommendationVideoParams } from "@/app/types/IRecommendations"
 
 export default function VideosSection() {
-  const [displayedVideos, setDisplayedVideos] = useState<IVideoInfo[]>([])
+  const [displayedVideos, setDisplayedVideos] = useState<IVideoInfoSuccessResponse[]>([])
   const [page, setPage] = useState(1)
   const [isInitialLoading, setIsInitialLoading] = useState(true)
-  const prevVideosRef = useRef<IVideoInfo[]>([])
+  const prevVideosRef = useRef<IVideoInfoSuccessResponse[]>([])
   const observerRef = useRef<IntersectionObserver | null>(null)
   const loadMoreRef = useRef<HTMLDivElement | null>(null)
   const containerRef = useRef<HTMLDivElement>(null)
