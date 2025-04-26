@@ -12,7 +12,7 @@ import SearchVideoCard from "./SearchVideoCard";
 export default function SearchContentSection() {
   const searchParams = useSearchParams();
   const query = searchParams.get("query");
-  const page = searchParams.get("page");
+  const [page, setPage] = useState(Number(searchParams.get("page")));
   const pageSize = searchParams.get("page_size");
 
   const [displayedVideos, setDisplayedVideos] = useState<IVideoInfo[]>([]);
@@ -33,13 +33,6 @@ export default function SearchContentSection() {
 
   const isDataEmpty = ids.length === 0;
 
-  useEffect(() => {
-    if (data) {
-      console.log("Search page data", data);
-      console.log("Search page IDs", ids);
-    }
-  }, [data, ids]);
-
   const {
     data: newVideos = [],
     isLoading,
@@ -51,6 +44,8 @@ export default function SearchContentSection() {
     refetchInterval: false,
   });
 
+
+
   useEffect(() => {
     if (isSuccess && isInitialLoading) {
       setIsInitialLoading(false);
@@ -59,9 +54,17 @@ export default function SearchContentSection() {
 
   useEffect(() => {
     if (isSuccess && newVideos.length > 0) {
+
       const prevVideos = prevVideosRef.current;
       const isDataChanged =
         JSON.stringify(newVideos) !== JSON.stringify(prevVideos);
+
+      console.log(
+        "isDataChanged",
+        isDataChanged,
+        "\nNEW_VIDEOS---" +JSON.stringify(newVideos),
+        "\nPREV_VIDEOS---" + JSON.stringify(prevVideos),
+      );
 
       if (isDataChanged) {
         setDisplayedVideos((prev) => {
@@ -86,10 +89,10 @@ export default function SearchContentSection() {
   }, [isInitialLoading]);
 
   const loadMoreVideos = useCallback(() => {
-    if (!isLoading && isSuccess && newVideos.length > 0) {
-      setPage((prev) => prev + 1);
+    if (!isLoading && isSuccess && newVideos.length > 0 && newVideos.length > Number(pageSize)) {
+      setPage(prev => prev + 1);
     }
-  }, [isLoading, isSuccess, newVideos.length]);
+  }, [isLoading, isSuccess, newVideos.length, pageSize]);
 
   useEffect(() => {
     if (observerRef.current) observerRef.current.disconnect();
@@ -118,13 +121,13 @@ export default function SearchContentSection() {
   if (isError) {
     console.error(error);
     return (
-      <div className="p-4 text-center text-red-500">Error loading videos</div>
+      <div className="justify-center text-red-500">Error loading videos</div>
     );
   }
 
   if (isDataEmpty) {
     return (
-      <div className="p-4 text-center text-gray-500">No results found</div>
+      <div className="flex justify-center text-gray-500 p-6 pt-4 pl-3.5">No results found</div>
     );
   }
 
@@ -174,11 +177,4 @@ export default function SearchContentSection() {
       )}
     </div>
   );
-}
-function setIsInitialLoading(arg0: boolean) {
-  throw new Error("Function not implemented.");
-}
-
-function setPage(arg0: (prev: any) => any) {
-  throw new Error("Function not implemented.");
 }

@@ -3,12 +3,12 @@ import { Button } from "./ui/button";
 import { Input } from "./ui/input";
 import { useState } from "react";
 import { ISearchRequest } from "../types/ISearch";
-
 import { useRouter } from "next/navigation";
 
 export default function SearchSection() {
-  const router = useRouter();
   const [searchValue, setSearchValue] = useState("");
+
+  const router = useRouter();
 
   const [searchParams, setSearchParams] = useState<ISearchRequest>({
     query: "",
@@ -31,6 +31,14 @@ export default function SearchSection() {
         placeholder="Введите запрос"
         value={searchValue}
         onChange={(e) => setSearchValue(e.target.value)}
+        onKeyDown={(e) => {
+          if (e.key === "Enter") {
+            handleSearch();
+            router.push(
+              `/search?query=${searchValue.trim()}&page=${searchParams.page}&page_size=${searchParams.page_size}`
+            );
+          }
+        }}
       />
       <Button
         className="hover:bg-slate-900 transition-colors duration-300 cursor-pointer"
