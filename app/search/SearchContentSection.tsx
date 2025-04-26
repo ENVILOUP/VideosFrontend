@@ -5,9 +5,9 @@ import { useSearch } from "../hooks/useSearch";
 import { useSearchParams } from "next/navigation";
 import { useVideoContentByIds } from "../hooks/useContent";
 import { IVideoInfo } from "../types/IContent";
-import SkeletonVideoCard from "../components/Video/Skeletons/SkeletonVideoCard";
+import SearchSkeletonVideoCard from "../components/Video/Skeletons/SkeletonVideoCard";
 import Link from "next/link";
-import VideoCard from "../components/Video/VideoCard";
+import SearchVideoCard from "./SearchVideoCard";
 
 export default function SearchContentSection() {
   const searchParams = useSearchParams();
@@ -30,7 +30,8 @@ export default function SearchContentSection() {
 
   const data = searchResponse.data?.data;
   const ids = data?.results.map((item) => item) || [];
-  console.log("Search page IDs", ids);
+
+  const isDataEmpty = ids.length === 0;
 
   useEffect(() => {
     if (data) {
@@ -121,16 +122,22 @@ export default function SearchContentSection() {
     );
   }
 
+  if (isDataEmpty) {
+    return (
+      <div className="p-4 text-center text-gray-500">No results found</div>
+    );
+  }
+
   return (
-    <div className="mx-auto">
+    <div className="flex justify-center">
       <div
         ref={containerRef}
-        className="grid grid-rows gap-4 sm:gap-6 p-6 pt-4 pl-3.5"
+        className="grid grid-rows-1 gap-4 sm:gap-6 p-6 pt-4 pl-3.5 w-1/2"
       >
         {displayedVideos.length === 0 &&
           Array.from({ length: 9 }).map((_, index) => (
             <div key={`initial-skeleton-${index}`}>
-              <SkeletonVideoCard />
+              <SearchSkeletonVideoCard />
             </div>
           ))}
 
@@ -138,9 +145,9 @@ export default function SearchContentSection() {
           <Link
             key={video.data.video_uuid}
             href={`/video/${video.data.video_uuid}`}
-            className="transition-opacity duration-300 ease-in-out opacity-0 animate-fade-in"
+            className="transition-opacity duration-300 ease-in-out opacity-0 animate-fade-in h-fit w-full"
           >
-            <VideoCard
+            <SearchVideoCard
               key={video.data.video_uuid}
               video_uuid={video.data.video_uuid}
               title={video.data.title}
@@ -152,13 +159,13 @@ export default function SearchContentSection() {
         ))}
       </div>
 
-      {isSuccess && (
+      {isSuccess && !isDataEmpty && (
         <div ref={loadMoreRef} className="flex justify-center py-8 h-20">
           {isLoading && !isInitialLoading && (
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 w-full px-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 px-6">
               {Array.from({ length: 3 }).map((_, index) => (
                 <div key={`bottom-skeleton-${index}`}>
-                  <SkeletonVideoCard />
+                  <SearchSkeletonVideoCard />
                 </div>
               ))}
             </div>
