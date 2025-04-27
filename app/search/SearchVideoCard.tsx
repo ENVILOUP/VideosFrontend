@@ -17,7 +17,7 @@ export default function SearchVideoCard({
 }: VideoCardProps) {
   return (
     <>
-      <div className="grid grid-cols-1 grid-cols-2 rounded-lg overflow-hidden h-full hover:scale-[1.02] transition-all duration-300 bg-white dark:bg-zinc-900 w-full">
+      <div className="grid grid-cols-2 rounded-lg overflow-hidden h-full hover:scale-[1.02] transition-all duration-300 bg-white dark:bg-zinc-900 w-full">
         <div>
           <div className="relative w-full aspect-video ">
             <Image

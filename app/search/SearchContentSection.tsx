@@ -9,6 +9,8 @@ import SearchSkeletonVideoCard from "../components/Video/Skeletons/SkeletonVideo
 import Link from "next/link";
 import SearchVideoCard from "./SearchVideoCard";
 
+let prevQuery = "";
+
 export default function SearchContentSection() {
   const searchParams = useSearchParams();
   const query = searchParams.get("query");
@@ -30,6 +32,7 @@ export default function SearchContentSection() {
 
   const data = searchResponse.data?.data;
   const ids = data?.results.map((item) => item) || [];
+  console.log(ids);
 
   const isDataEmpty = ids.length === 0;
 
@@ -59,13 +62,6 @@ export default function SearchContentSection() {
       const isDataChanged =
         JSON.stringify(newVideos) !== JSON.stringify(prevVideos);
 
-      console.log(
-        "isDataChanged",
-        isDataChanged,
-        "\nNEW_VIDEOS---" +JSON.stringify(newVideos),
-        "\nPREV_VIDEOS---" + JSON.stringify(prevVideos),
-      );
-
       if (isDataChanged) {
         setDisplayedVideos((prev) => {
           const existingIds = new Set(
@@ -78,8 +74,12 @@ export default function SearchContentSection() {
         });
         prevVideosRef.current = newVideos;
       }
+      if (query && query !== prevQuery) {
+        setDisplayedVideos(newVideos);
+        prevQuery = query;
+      }
     }
-  }, [isSuccess, newVideos]);
+  }, [isSuccess, newVideos, query]);
 
   useEffect(() => {
     if (containerRef.current && isInitialLoading) {
@@ -135,7 +135,7 @@ export default function SearchContentSection() {
     <div className="flex justify-center">
       <div
         ref={containerRef}
-        className="grid grid-rows-1 gap-4 sm:gap-6 p-6 pt-4 pl-3.5 w-1/2"
+        className="grid grid-rows-1 gap-4 sm:gap-6 p-6 pt-4 pl-3.5 container lg:w-[65%] w-full"
       >
         {displayedVideos.length === 0 &&
           Array.from({ length: 9 }).map((_, index) => (
