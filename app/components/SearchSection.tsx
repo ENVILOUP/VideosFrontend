@@ -1,20 +1,20 @@
 import { Search } from "lucide-react";
 import { Button } from "./ui/button";
 import { Input } from "./ui/input";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { ISearchRequest } from "../types/ISearch";
 import { useRouter } from "next/navigation";
 
 export default function SearchSection() {
   const [searchValue, setSearchValue] = useState("");
-
-  const router = useRouter();
-
   const [searchParams, setSearchParams] = useState<ISearchRequest>({
     query: "",
     page: 1,
     page_size: 10,
   });
+  const searchLink = `/search?query=${searchValue.trim()}&page=${searchParams.page}&page_size=${searchParams.page_size}`;
+
+  const router = useRouter();
 
   const handleSearch = () => {
     setSearchParams((prev) => ({
@@ -22,6 +22,16 @@ export default function SearchSection() {
       query: searchValue.trim(),
     }));
   };
+
+  useEffect(() => {
+    const searchParamValue = new URLSearchParams(window.location.search).get(
+      "query"
+    );
+    if (searchParamValue) {
+      setSearchValue(searchParamValue);
+    }
+  }, []);
+
 
   return (
     <>
@@ -34,9 +44,7 @@ export default function SearchSection() {
         onKeyDown={(e) => {
           if (e.key === "Enter") {
             handleSearch();
-            router.push(
-              `/search?query=${searchValue.trim()}&page=${searchParams.page}&page_size=${searchParams.page_size}`
-            );
+            router.push(searchLink);
           }
         }}
       />
@@ -46,9 +54,7 @@ export default function SearchSection() {
         variant="outline"
         onClick={() => {
           handleSearch();
-          router.push(
-            `/search?query=${searchValue.trim()}&page=${searchParams.page}&page_size=${searchParams.page_size}`
-          );
+          router.push(searchLink);
         }
         }
       >
