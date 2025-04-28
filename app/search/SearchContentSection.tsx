@@ -1,27 +1,40 @@
 "use client";
 
-import { useVideosContent } from "@/app/hooks/useContent";
-import VideoCard from "./VideoCard";
-import Link from "next/link";
 import { useCallback, useEffect, useRef, useState } from "react";
-import type { IVideoInfo } from "@/app/types/IContent";
-import SkeletonVideoCard from "./Skeletons/SkeletonVideoCard";
-import type { IRecommendationVideoParams } from "@/app/types/IRecommendations";
+import { useSearch } from "../hooks/useSearch";
+import { useSearchParams } from "next/navigation";
+import { useVideoContentByIds } from "../hooks/useContent";
+import { IVideoInfo } from "../types/IContent";
+import SearchSkeletonVideoCard from "../components/Video/Skeletons/SkeletonVideoCard";
+import Link from "next/link";
+import SearchVideoCard from "./SearchVideoCard";
 
-export default function VideosSection() {
+let prevQuery = "";
+
+export default function SearchContentSection() {
+  const searchParams = useSearchParams();
+  const query = searchParams.get("query");
+  const [page, setPage] = useState(Number(searchParams.get("page")));
+  const pageSize = searchParams.get("page_size");
+
   const [displayedVideos, setDisplayedVideos] = useState<IVideoInfo[]>([]);
-  const [page, setPage] = useState(1);
   const [isInitialLoading, setIsInitialLoading] = useState(true);
   const prevVideosRef = useRef<IVideoInfo[]>([]);
   const observerRef = useRef<IntersectionObserver | null>(null);
   const loadMoreRef = useRef<HTMLDivElement | null>(null);
   const containerRef = useRef<HTMLDivElement>(null);
 
-  const params: IRecommendationVideoParams = {
-    page_size: 15,
-    page: page,
-  };
+  const searchResponse = useSearch({
+    query: String(query),
+    page: Number(page),
+    page_size: Number(pageSize),
+  });
 
+  const data = searchResponse.data?.data;
+  const ids = data?.results.map((item) => item) || [];
+  console.log(ids);
+
+  const isDataEmpty = ids.length === 0;
 
   const {
     data: newVideos = [],
@@ -29,10 +42,12 @@ export default function VideosSection() {
     isSuccess,
     isError,
     error,
-  } = useVideosContent(params, {
-        retry: 3,
-        refetchInterval: false,
-      });
+  } = useVideoContentByIds(ids, {
+    retry: 3,
+    refetchInterval: false,
+  });
+
+
 
   useEffect(() => {
     if (isSuccess && isInitialLoading) {
@@ -42,6 +57,7 @@ export default function VideosSection() {
 
   useEffect(() => {
     if (isSuccess && newVideos.length > 0) {
+
       const prevVideos = prevVideosRef.current;
       const isDataChanged =
         JSON.stringify(newVideos) !== JSON.stringify(prevVideos);
@@ -58,8 +74,12 @@ export default function VideosSection() {
         });
         prevVideosRef.current = newVideos;
       }
+      if (query && query !== prevQuery) {
+        setDisplayedVideos(newVideos);
+        prevQuery = query;
+      }
     }
-  }, [isSuccess, newVideos]);
+  }, [isSuccess, newVideos, query]);
 
   useEffect(() => {
     if (containerRef.current && isInitialLoading) {
@@ -69,10 +89,10 @@ export default function VideosSection() {
   }, [isInitialLoading]);
 
   const loadMoreVideos = useCallback(() => {
-    if (!isLoading && isSuccess && newVideos.length > 0) {
-      setPage((prev) => prev + 1);
+    if (!isLoading && isSuccess && newVideos.length > 0 && newVideos.length > Number(pageSize)) {
+      setPage(prev => prev + 1);
     }
-  }, [isLoading, isSuccess, newVideos.length]);
+  }, [isLoading, isSuccess, newVideos.length, pageSize]);
 
   useEffect(() => {
     if (observerRef.current) observerRef.current.disconnect();
@@ -101,20 +121,26 @@ export default function VideosSection() {
   if (isError) {
     console.error(error);
     return (
-      <div className="p-4 text-center text-red-500">Error loading videos</div>
+      <div className="justify-center text-red-500">Error loading videos</div>
+    );
+  }
+
+  if (isDataEmpty) {
+    return (
+      <div className="flex justify-center text-gray-500 p-6 pt-4 pl-3.5">No results found</div>
     );
   }
 
   return (
-    <div className="mx-auto">
+    <div className="flex justify-center">
       <div
         ref={containerRef}
-        className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 p-6 pt-4 pl-3.5"
+        className="grid grid-rows-1 gap-4 sm:gap-6 p-6 pt-4 pl-3.5 container lg:w-[65%] w-full"
       >
         {displayedVideos.length === 0 &&
           Array.from({ length: 9 }).map((_, index) => (
             <div key={`initial-skeleton-${index}`}>
-              <SkeletonVideoCard />
+              <SearchSkeletonVideoCard />
             </div>
           ))}
 
@@ -122,9 +148,9 @@ export default function VideosSection() {
           <Link
             key={video.data.video_uuid}
             href={`/video/${video.data.video_uuid}`}
-            className="transition-opacity duration-300 ease-in-out opacity-0 animate-fade-in"
+            className="transition-opacity duration-300 ease-in-out opacity-0 animate-fade-in h-fit w-full"
           >
-            <VideoCard
+            <SearchVideoCard
               key={video.data.video_uuid}
               video_uuid={video.data.video_uuid}
               title={video.data.title}
@@ -136,13 +162,13 @@ export default function VideosSection() {
         ))}
       </div>
 
-      {isSuccess && (
+      {isSuccess && !isDataEmpty && (
         <div ref={loadMoreRef} className="flex justify-center py-8 h-20">
           {isLoading && !isInitialLoading && (
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 w-full px-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 px-6">
               {Array.from({ length: 3 }).map((_, index) => (
                 <div key={`bottom-skeleton-${index}`}>
-                  <SkeletonVideoCard />
+                  <SearchSkeletonVideoCard />
                 </div>
               ))}
             </div>
