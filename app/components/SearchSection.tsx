@@ -42,7 +42,7 @@ export default function SearchSection() {
         value={searchValue}
         onChange={(e) => setSearchValue(e.target.value)}
         onKeyDown={(e) => {
-          if (e.key === "Enter") {
+          if (e.key === "Enter" && searchValue) {
             handleSearch();
             router.push(searchLink);
           }
@@ -54,7 +54,8 @@ export default function SearchSection() {
         variant="outline"
         onClick={() => {
           handleSearch();
-          router.push(searchLink);
+          if (searchValue)
+            router.push(searchLink);
         }
         }
       >
