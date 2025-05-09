@@ -41,7 +41,7 @@ To start application in dev mode use:
 docker compose up -d
 ```
 
-Once running, open http://localhost:3000 in your browser to view the application.
+Once running, open http://videos.enviloup.localhost:8085/ in your browser to view the application.
 
 ### Production
 
@@ -50,4 +50,4 @@ To start application in prod mode use:
 docker compose -f docker-compose.yaml up -d
 ```
 
-Once running, open http://localhost:8085 in your browser to view the application.
+Once running, open http://videos.enviloup.localhost:8085/ in your browser to view the application.
