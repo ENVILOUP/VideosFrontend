@@ -23,6 +23,15 @@ jobs:
           filters: |
             app:
               - 'app/**'
+              - 'nginx/**'
+              - 'public/**'
+              - 'package.json'
+              - 'bun.lockb'
+              - 'tsconfig.json'
+              - 'next.config.ts'
+              - 'postcss.config.mjs'
+              - 'Dockerfile.production'
+              - '.dockerignore'
 
   trigger-app:
     needs: detect-changes
