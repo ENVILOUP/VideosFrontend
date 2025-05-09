@@ -1,4 +1,4 @@
-public/media*
+public/media/*
 
 node_modules
 .git

@@ -10,7 +10,7 @@ This is the frontend project for **Enviloup**, built with [Next.js](https://next
 
 ---
 
-## 🚀 Getting Started Local
+## 🚀 Getting Started Local (without Docker)
 
 To get the project up and running locally, follow the steps below.
 
@@ -32,7 +32,7 @@ bun dev
 
 Once running, open http://localhost:3000 in your browser to view the application.
 
-## Getting Stated Docker
+## 🚀 Getting Started Docker
 
 ### Development
 
