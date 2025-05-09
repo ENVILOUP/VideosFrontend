@@ -1,5 +1,9 @@
 version: '3.8'
 
+volumes:
+  next_static_data:
+  app_public_data:
+
 services:
   app:
     build:
@@ -10,8 +14,11 @@ services:
 
     environment:
       - NODE_ENV=production
-    expose:
-      - "3000" 
+    volumes:
+      - next_static_data:/app/.next/static
+      - app_public_data:/app/public
+    # expose:
+    #   - "3000" 
     networks:
       - enviloup_void_sex_network
 
@@ -27,6 +34,8 @@ services:
       - ./nginx/conf.d/app.conf:/etc/nginx/conf.d/app.conf:ro
       - ./nginx/conf.d/cdn.enviloup.conf:/etc/nginx/conf.d/cdn.enviloup.conf:ro
       - ./public/media:/var/www/media:ro
+      - app_public_data:/var/www/html/public:ro
+      - next_static_data:/var/www/html/_next/static:ro
     depends_on:
       - app
     networks:

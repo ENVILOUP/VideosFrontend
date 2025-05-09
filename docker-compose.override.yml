@@ -16,4 +16,4 @@ services:
 
 networks:
   enviloup_void_sex_network:
-    external: true
+    attachable: true

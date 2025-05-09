@@ -2,7 +2,10 @@ FROM oven/bun:1-slim
 
 WORKDIR /app
 
-COPY bun.lockb package.json ./
+ENV NEXT_TELEMETRY_DISABLED=1
+
+# если эти файлы не изменились
+COPY package.json bun.lockb* ./
 
 RUN bun install --frozen-lockfile
 
