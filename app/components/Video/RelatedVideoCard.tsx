@@ -9,10 +9,7 @@ interface RelatedVideoCardProps {
 }
 
 export default function RelatedVideoCard({
-  video_uuid,
   title,
-  description,
-  video_url,
   thumbnail_url,
 }: RelatedVideoCardProps) {
   return (

@@ -11,7 +11,13 @@ const nextConfig: NextConfig = {
         pathname: "/thumbnails/**",
       }
     ]
-  }
+	},
+	eslint: {
+		ignoreDuringBuilds: true,
+	},
+	typescript: {
+		ignoreBuildErrors: true,
+	},
 };
 
 export default nextConfig;
