@@ -1,0 +1,28 @@
+version: '3.8'
+
+services:
+  app:
+    image: enviloup-frontend:prod
+    build:
+      context: .
+      dockerfile: Dockerfile.production
+    container_name: enviloup_videos
+    restart: unless-stopped
+
+    environment:
+      - NODE_ENV=production
+
+  nginx:
+    image: nginx:alpine 
+    container_name: nginx_reverse_proxy
+    hostname: cdn.enviloup.localhost
+    restart: unless-stopped
+    ports:
+      - "8085:80" 
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./nginx/conf.d/app.conf:/etc/nginx/conf.d/app.conf:ro
+      - ./nginx/conf.d/cdn.enviloup.conf:/etc/nginx/conf.d/cdn.enviloup.conf:ro
+      - ./public/media:/var/www/media:ro
+    depends_on:
+      - app

@@ -1,0 +1,14 @@
+services:
+  app:
+    image: enviloup-frontend:dev
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    container_name: enviloup_videos_dev
+    environment:
+      - NODE_ENV=development
+    ports:
+      - "3000:3000"
+    volumes:
+      - .:/app
+      - /app/node_modules

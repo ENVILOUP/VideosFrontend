@@ -1,38 +1,62 @@
 # Enviloup Frontend
 
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+This is the frontend project for **Enviloup**, built with [Next.js](https://nextjs.org/).
 
-## Getting Started
+## 🛠️ Requirements
 
-First, run the development server:
+- [bun](https://bun.sh/)
+- [docker](https://www.docker.com/)
+- [docker-compose](https://docs.docker.com/compose/)
+
+---
+
+## 🚀 Getting Started Local (without Docker)
+
+To get the project up and running locally, follow the steps below.
+
+---
+
+### 1. Install Dependencies
+
+You can use any of the following package managers:
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
+bun install
+```
+
+### 2. Run the Development Server (local)
+
+```bash
 bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Once running, open http://localhost:3000 in your browser to view the application.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 🚀 Getting Started Docker
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### Development
 
-## Learn More
+To start application in dev mode use:
 
-To learn more about Next.js, take a look at the following resources:
+```bash
+docker compose build app
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```bash
+docker compose up -d
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Once running, open http://videos.enviloup.localhost:8085/ in your browser to view the application.
 
-## Deploy on Vercel
+### Production
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+To start application in prod mode use:
+```bash
+docker compose -f docker-compose.yml build app
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```bash
+docker compose -f docker-compose.yml up -d
+```
+
+Once running, open http://videos.enviloup.localhost:8085/ in your browser to view the application.

@@ -1,0 +1,14 @@
+FROM oven/bun:1-slim
+
+WORKDIR /app
+
+ENV NEXT_TELEMETRY_DISABLED=1
+
+# если эти файлы не изменились
+COPY package.json bun.lockb* ./
+
+RUN bun install --frozen-lockfile
+
+COPY . .
+
+CMD ["bun", "run", "dev"]
