@@ -7,9 +7,9 @@ const nextConfig: NextConfig = {
       {
         protocol: "http",
         hostname: "cdn.enviloup.localhost",
-        port: "",
+        port: "8085",
         pathname: "/thumbnails/**",
-      }
+			}
     ]
 	},
 	eslint: {

@@ -1,11 +1,8 @@
 version: '3.8'
 
-volumes:
-  next_static_data:
-  app_public_data:
-
 services:
   app:
+    image: enviloup-frontend:prod
     build:
       context: .
       dockerfile: Dockerfile.production
@@ -14,13 +11,6 @@ services:
 
     environment:
       - NODE_ENV=production
-    volumes:
-      - next_static_data:/app/.next/static
-      - app_public_data:/app/public
-    # expose:
-    #   - "3000" 
-    networks:
-      - enviloup_void_sex_network
 
   nginx:
     image: nginx:alpine 
@@ -34,13 +24,5 @@ services:
       - ./nginx/conf.d/app.conf:/etc/nginx/conf.d/app.conf:ro
       - ./nginx/conf.d/cdn.enviloup.conf:/etc/nginx/conf.d/cdn.enviloup.conf:ro
       - ./public/media:/var/www/media:ro
-      - app_public_data:/var/www/html/public:ro
-      - next_static_data:/var/www/html/_next/static:ro
     depends_on:
       - app
-    networks:
-      - enviloup_void_sex_network
-
-networks:
-  enviloup_void_sex_network:
-    attachable: true

@@ -1,5 +1,6 @@
 services:
   app:
+    image: enviloup-frontend:dev
     build:
       context: .
       dockerfile: Dockerfile.dev
@@ -11,9 +12,3 @@ services:
     volumes:
       - .:/app
       - /app/node_modules
-    networks:
-      - enviloup_void_sex_network
-
-networks:
-  enviloup_void_sex_network:
-    attachable: true

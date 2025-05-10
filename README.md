@@ -37,6 +37,11 @@ Once running, open http://localhost:3000 in your browser to view the application
 ### Development
 
 To start application in dev mode use:
+
+```bash
+docker compose build app
+```
+
 ```bash
 docker compose up -d
 ```
@@ -47,7 +52,11 @@ Once running, open http://videos.enviloup.localhost:8085/ in your browser to vie
 
 To start application in prod mode use:
 ```bash
-docker compose -f docker-compose.yaml up -d
+docker compose -f docker-compose.yml build app
+```
+
+```bash
+docker compose -f docker-compose.yml up -d
 ```
 
 Once running, open http://videos.enviloup.localhost:8085/ in your browser to view the application.
