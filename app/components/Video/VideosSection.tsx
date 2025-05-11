@@ -22,7 +22,6 @@ export default function VideosSection() {
     page: page,
   };
 
-
   const {
     data: newVideos = [],
     isLoading,
@@ -30,9 +29,9 @@ export default function VideosSection() {
     isError,
     error,
   } = useVideosContent(params, {
-        retry: 3,
-        refetchInterval: false,
-      });
+    retry: 3,
+    refetchInterval: false,
+  });
 
   useEffect(() => {
     if (isSuccess && isInitialLoading) {
@@ -49,10 +48,10 @@ export default function VideosSection() {
       if (isDataChanged) {
         setDisplayedVideos((prev) => {
           const existingIds = new Set(
-            prev.map((video) => video.data.video_uuid),
+            prev.map((video) => video.data.video_uuid)
           );
           const filteredNewVideos = newVideos.filter(
-            (video) => !existingIds.has(video.data.video_uuid),
+            (video) => !existingIds.has(video.data.video_uuid)
           );
           return [...prev, ...filteredNewVideos];
         });
@@ -86,7 +85,7 @@ export default function VideosSection() {
       {
         rootMargin: "200px",
         threshold: 0.1,
-      },
+      }
     );
 
     if (loadMoreRef.current) {

@@ -9,10 +9,10 @@ interface VideoCardProps {
 }
 
 export default function SearchVideoCard({
-	video_uuid,
+  video_uuid,
   title,
-	description,
-	video_url,
+  description,
+  video_url,
   thumbnail_url,
 }: VideoCardProps) {
   return (
