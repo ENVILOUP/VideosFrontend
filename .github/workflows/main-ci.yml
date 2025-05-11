@@ -1,0 +1,39 @@
+name: Detect and Trigger 
+
+on:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  detect-changes:
+    runs-on: ubuntu-latest
+
+    outputs:
+      frontend: ${{ steps.filter.outputs.app }}
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Check for changes
+        id: filter
+        uses: dorny/paths-filter@v3
+        with:
+          filters: |
+            app:
+              - 'app/**'
+              - 'nginx/**'
+              - 'public/**'
+              - 'package.json'
+              - 'bun.lockb'
+              - 'tsconfig.json'
+              - 'next.config.ts'
+              - 'postcss.config.mjs'
+              - 'Dockerfile.production'
+              - '.dockerignore'
+
+  trigger-app:
+    needs: detect-changes
+    if: needs.detect-changes.outputs.frontend == 'true'
+    uses: ./.github/workflows/frontend.yml

@@ -1,11 +1,11 @@
-import Image from "next/image"
+import Image from "next/image";
 
 interface RelatedVideoCardProps {
-  video_uuid: string
-  title: string
-  description: string
-  video_url: string
-  thumbnail_url: string
+  video_uuid: string;
+  title: string;
+  description: string;
+  video_url: string;
+  thumbnail_url: string;
 }
 
 export default function RelatedVideoCard({
@@ -30,11 +30,14 @@ export default function RelatedVideoCard({
 
       <div className="p-2 flex flex-col justify-between min-w-0 flex-1">
         <div className="flex flex-col justify-between h-full">
-          <h3 className="text-xs font-medium line-clamp-3 break-words">{title}</h3>
-          <p className="text-xs text-slate-600 dark:text-slate-400 mt-1">Author</p>
+          <h3 className="text-xs font-medium line-clamp-3 break-words">
+            {title}
+          </h3>
+          <p className="text-xs text-slate-600 dark:text-slate-400 mt-1">
+            Author
+          </p>
         </div>
       </div>
     </div>
-  )
+  );
 }
-

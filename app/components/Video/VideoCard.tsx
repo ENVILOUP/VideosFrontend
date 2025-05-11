@@ -9,24 +9,28 @@ interface VideoCardProps {
 }
 
 export default function VideoCard({
-  video_uuid,
-  title,
-  description,
-  video_url,
-  thumbnail_url,
+	video_uuid,
+	title,
+	description,
+	video_url,
+	thumbnail_url
 }: VideoCardProps) {
   return (
     <>
       <div className="flex flex-col border rounded-lg overflow-hidden h-full hover:scale-[1.02] transition-all duration-300 bg-white dark:bg-zinc-900">
         <div className="relative w-full aspect-video">
-          <Image
-            className="rounded-t-lg object-cover"
-            layout="fill"
-            objectFit="cover"
-            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+					{/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            className="rounded-t-lg object-cover absolute inset-0 w-full h-full"
             src={thumbnail_url}
+            srcSet={`
+							${thumbnail_url}?w=640 640w,
+							${thumbnail_url}?w=1024 1024w,
+							${thumbnail_url}?w=1920 1920w
+						`}
+            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
             alt={title}
-            priority={false}
+            loading="lazy"
           />
         </div>
         <div className="p-3 flex gap-2 flex-grow">
